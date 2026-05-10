@@ -1,8 +1,4 @@
-# Fresh Stable Main.qml Structure
 
-Replace your ENTIRE current `qml/Main.qml` with this clean working version.
-
-```qml
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -1046,4 +1042,4 @@ $ " + commandInput.text + "
     }
 }
 
-```
+
