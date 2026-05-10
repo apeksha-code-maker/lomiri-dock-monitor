@@ -142,7 +142,67 @@ Button {
         Layout.fillWidth: true
         Layout.fillHeight: true
         currentIndex: currentPage
+Rectangle {
+    width: parent.width
+    height: 70
+    color: "#161616"
 
+    Row {
+        anchors.fill: parent
+        anchors.leftMargin: 25
+        anchors.rightMargin: 25
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 30
+
+        Text {
+            text: "Docker DevOps Console"
+            color: "white"
+            font.pixelSize: 28
+            font.bold: true
+        }
+
+        Rectangle {
+            width: 12
+            height: 12
+            radius: 6
+            color: "#00C853"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "Server Online"
+            color: "#00C853"
+            font.pixelSize: 18
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Item {
+            width: 350
+            height: 1
+        }
+
+        Text {
+            text: "CPU: 34%"
+            color: "#AAAAAA"
+            font.pixelSize: 18
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "RAM: 61%"
+            color: "#AAAAAA"
+            font.pixelSize: 18
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "Docker Active"
+            color: "#00BCD4"
+            font.pixelSize: 18
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+}
         // DASHBOARD PAGE
         Rectangle {
             color: "#121212"
