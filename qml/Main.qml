@@ -341,11 +341,10 @@ onClicked: {
                             verticalAlignment: Text.AlignVCenter
                         }
 
-                        onClicked: {
-                            statusText.text = "Status: Stopped"
-                            messageBox.text = "Docker container stopped"
-                            messageBox.open()
-                        }
+                       onClicked: {
+                          statusText.text = "Status: Stopped"
+                         console.log("Docker container stopped")
+                       }
                     }
 
                     // LOGS BUTTON
@@ -374,9 +373,8 @@ onClicked: {
                         }
 
                         onClicked: {
-                            messageBox.text = "Opening container logs"
-                            messageBox.open()
-                        }
+                                console.log("Opening container logs")
+                          }
                     }
                 }
             }
@@ -1053,11 +1051,7 @@ Rectangle {
                 }
             }
         }
-                 }
-           }
-       }
-
-        // TERMINAL OUTPUT
+                      // TERMINAL OUTPUT
         Rectangle {
             width: parent.width - 50
             height: 500
@@ -1100,18 +1094,15 @@ Rectangle {
                         text: "linux-terminal"
                         color: "#888888"
                         font.pixelSize: 16
-                        anchors.verticalCenter: parent.verticalCenter
                     }
                 }
 
-                // SEPARATOR LINE
                 Rectangle {
                     width: parent.width
                     height: 1
                     color: "#1F1F1F"
                 }
 
-                // TERMINAL SCROLL AREA
                 ScrollView {
                     width: parent.width
                     height: 400
@@ -1126,6 +1117,7 @@ Rectangle {
                         color: "#00FF99"
                         font.family: "monospace"
                         font.pixelSize: 16
+
                         wrapMode: Text.Wrap
 
                         background: Rectangle {
@@ -1135,8 +1127,6 @@ Rectangle {
                 }
             }
         }
-    }
+            }
 }
-
-
-
+}
