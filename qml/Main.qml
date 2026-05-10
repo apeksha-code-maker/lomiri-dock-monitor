@@ -110,8 +110,9 @@ ApplicationWindow {
                         }
 
                         Text {
-                            text: "Status: Running"
-                            color: "#4CAF50"
+                             id: statusText
+                          text: "Status: Stopped"
+                           color: "#4CAF50"
                         }
 
                         Text {
