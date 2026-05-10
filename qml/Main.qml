@@ -930,7 +930,7 @@ Rectangle {
             }
         }
 
-        // TERMINAL OUTPUT
+               // TERMINAL OUTPUT
         Rectangle {
             width: parent.width - 50
             height: 500
@@ -990,7 +990,6 @@ Rectangle {
                         id: terminalOutput
 
                         readOnly: true
-
                         text: "Linux terminal ready...\n"
 
                         color: "#00FF99"
@@ -1007,10 +1006,7 @@ Rectangle {
             }
         }
     }
-} 
-}
-         }
 }
 
-
-
+    }
+}
