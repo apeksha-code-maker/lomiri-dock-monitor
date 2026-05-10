@@ -152,13 +152,13 @@ Button {
                 anchors.fill: parent
                 spacing: 20
 
-                Text {
-                    text: "LomiriDock Monitor"
-                    color: "white"
-                    font.pixelSize: 32
-                    font.bold: true
-                }
-
+              Text {
+    text: "Docker Dashboard"
+    color: "white"
+    font.pixelSize: 42
+    font.bold: true
+    font.letterSpacing: 1
+}
                 Rectangle {
                     width: 850
                     height: 120
