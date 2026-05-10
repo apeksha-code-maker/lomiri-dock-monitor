@@ -1061,7 +1061,8 @@ Rectangle {
                 }
             }
         }
-                      // TERMINAL OUTPUT
+
+        // TERMINAL OUTPUT
         Rectangle {
             width: parent.width - 50
             height: 500
@@ -1112,6 +1113,7 @@ Rectangle {
                     height: 1
                     color: "#1F1F1F"
                 }
+
                 ScrollView {
                     width: parent.width
                     height: 400
@@ -1138,4 +1140,7 @@ Rectangle {
         }
     }
 }
-    
+
+        }
+    }
+}
