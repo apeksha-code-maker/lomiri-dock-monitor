@@ -1060,6 +1060,9 @@ Rectangle {
                 }
             }
         }
+                 }
+           }
+       }
 
         // TERMINAL OUTPUT
         Rectangle {
