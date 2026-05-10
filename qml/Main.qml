@@ -961,19 +961,19 @@ Flickable {
             font.pixelSize: 20
         }
 
-        Text {
+               Text {
             text: "[07:46:58] [INFO] Docker stats updated"
             color: "white"
             font.family: "monospace"
             font.pixelSize: 20
         }
- 
-    }
-}
-            }
-        }
-    }
-}
+
+    }   // Column inside Flickable
+}       // Flickable
+            }   // Column inside terminal
+        }       // Terminal Rectangle
+    }           // Logs Page Column
+}               // Logs Page Rectangle
 
 // COMMANDS PAGE
 // COMMANDS PAGE
