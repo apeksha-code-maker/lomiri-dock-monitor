@@ -167,10 +167,13 @@ ApplicationWindow {
         }
 
         // MAIN PAGE STACK
-        StackLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            currentIndex: currentPage
+       StackLayout {
+    id: pages
+
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+
+    currentIndex: currentPage
 
 
 
