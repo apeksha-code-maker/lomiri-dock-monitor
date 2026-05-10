@@ -1,6 +1,8 @@
+# Fresh Stable Main.qml Structure
 
+Replace your ENTIRE current `qml/Main.qml` with this clean working version.
 
-
+```qml
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -740,45 +742,153 @@ $ docker logs nginx
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 25
+                    anchors.margins: 24
                     spacing: 22
 
-                    Text {
-                        text: "Docker Logs Console"
-                        color: "white"
-                        font.pixelSize: 38
-                        font.bold: true
+                    // HEADER
+                    Rectangle {
+                        width: parent.width - 40
+                        height: 130
+                        radius: 26
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "#1C1C1C" }
+                            GradientStop { position: 1.0; color: "#121212" }
+                        }
+                        border.color: "#2B2B2B"
+                        border.width: 1
+
+                        Row {
+                            anchors.fill: parent
+                            anchors.margins: 24
+                            spacing: 20
+
+                            Rectangle {
+                                width: 78
+                                height: 78
+                                radius: 22
+                                color: "#00C853"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "📜"
+                                    font.pixelSize: 40
+                                }
+                            }
+
+                            Column {
+                                spacing: 10
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Text {
+                                    text: "Docker Logs Console"
+                                    color: "white"
+                                    font.pixelSize: 40
+                                    font.bold: true
+                                }
+
+                                Text {
+                                    text: "Track real-time Docker container logs"
+                                    color: "#AAAAAA"
+                                    font.pixelSize: 18
+                                }
+                            }
+                        }
                     }
 
+                    // TERMINAL
                     Rectangle {
-                        width: parent.width - 50
-                        height: 560
-                        radius: 18
+                        width: parent.width - 40
+                        height: 520
+                        radius: 24
                         color: "#050505"
                         border.color: "#00C853"
                         border.width: 2
 
-                        Flickable {
+                        Column {
                             anchors.fill: parent
-                            anchors.margins: 20
-                            clip: true
+                            anchors.margins: 18
+                            spacing: 16
 
-                            Column {
-                                width: parent.width
-                                spacing: 18
+                            Row {
+                                spacing: 10
 
-                                Text {
-                                    text: "[INFO] Docker daemon initialized"
-                                    color: "#00C853"
-                                    font.family: "monospace"
-                                    font.pixelSize: 20
+                                Rectangle {
+                                    width: 14
+                                    height: 14
+                                    radius: 7
+                                    color: "#FF5F56"
+                                }
+
+                                Rectangle {
+                                    width: 14
+                                    height: 14
+                                    radius: 7
+                                    color: "#FFBD2E"
+                                }
+
+                                Rectangle {
+                                    width: 14
+                                    height: 14
+                                    radius: 7
+                                    color: "#27C93F"
                                 }
 
                                 Text {
-                                    text: "[INFO] nginx-container started"
-                                    color: "white"
-                                    font.family: "monospace"
-                                    font.pixelSize: 20
+                                    text: "docker-logs-terminal"
+                                    color: "#888888"
+                                    font.pixelSize: 16
+                                }
+                            }
+
+                            Rectangle {
+                                width: parent.width
+                                height: 1
+                                color: "#1F1F1F"
+                            }
+
+                            Flickable {
+                                width: parent.width
+                                height: 420
+                                clip: true
+
+                                Column {
+                                    width: parent.width - 40
+                                    spacing: 16
+
+                                    Text {
+                                        text: "[INFO] Docker daemon initialized"
+                                        color: "#00E676"
+                                        font.family: "monospace"
+                                        font.pixelSize: 18
+                                    }
+
+                                    Text {
+                                        text: "[INFO] nginx-container started"
+                                        color: "white"
+                                        font.family: "monospace"
+                                        font.pixelSize: 18
+                                    }
+
+                                    Text {
+                                        text: "[WARNING] CPU usage spike detected"
+                                        color: "#FFC107"
+                                        font.family: "monospace"
+                                        font.pixelSize: 18
+                                    }
+
+                                    Text {
+                                        text: "[ERROR] Failed image pull request"
+                                        color: "#FF5252"
+                                        font.family: "monospace"
+                                        font.pixelSize: 18
+                                    }
+
+                                    Text {
+                                        text: "[INFO] Docker network connected"
+                                        color: "white"
+                                        font.family: "monospace"
+                                        font.pixelSize: 18
+                                    }
                                 }
                             }
                         }
@@ -792,27 +902,71 @@ $ docker logs nginx
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 25
+                    anchors.margins: 24
                     spacing: 22
 
-                    Text {
-                        text: "Linux Command Console"
-                        color: "white"
-                        font.pixelSize: 38
-                        font.bold: true
-                    }
-
+                    // HEADER
                     Rectangle {
-                        width: parent.width - 50
-                        height: 60
-                        radius: 14
-                        color: "#111111"
-                        border.color: "#00FF99"
+                        width: parent.width - 40
+                        height: 130
+                        radius: 26
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "#1C1C1C" }
+                            GradientStop { position: 1.0; color: "#121212" }
+                        }
+                        border.color: "#2B2B2B"
                         border.width: 1
 
                         Row {
                             anchors.fill: parent
-                            anchors.margins: 12
+                            anchors.margins: 24
+                            spacing: 20
+
+                            Rectangle {
+                                width: 78
+                                height: 78
+                                radius: 22
+                                color: "#00BCD4"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "💻"
+                                    font.pixelSize: 40
+                                }
+                            }
+
+                            Column {
+                                spacing: 10
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Text {
+                                    text: "Linux Command Console"
+                                    color: "white"
+                                    font.pixelSize: 40
+                                    font.bold: true
+                                }
+
+                                Text {
+                                    text: "Execute Docker and Linux commands in real time"
+                                    color: "#AAAAAA"
+                                    font.pixelSize: 18
+                                }
+                            }
+                        }
+                    }
+
+                    // COMMAND INPUT
+                    Rectangle {
+                        width: parent.width - 40
+                        height: 70
+                        radius: 18
+                        color: "#111111"
+                        border.color: "#00BCD4"
+                        border.width: 1
+
+                        Row {
+                            anchors.fill: parent
+                            anchors.margins: 14
                             spacing: 12
 
                             Text {
@@ -825,29 +979,47 @@ $ docker logs nginx
                             TextField {
                                 id: commandInput
                                 width: 520
-                                height: 36
+                                height: 40
                                 text: "docker ps"
+                                color: "white"
+
+                                background: Rectangle {
+                                    radius: 10
+                                    color: "#1A1A1A"
+                                    border.color: "#333333"
+                                }
                             }
 
                             Button {
                                 text: "Execute"
-                                width: 120
-                                height: 38
+                                width: 130
+                                height: 42
+
+                                background: Rectangle {
+                                    radius: 14
+                                    color: "#00C853"
+                                }
 
                                 onClicked: {
                                     var result = backend.runCommand(commandInput.text)
-                                    terminalOutput.text += "\n$ " + commandInput.text + "\n"
-                                    terminalOutput.text += result + "\n"
+                                    terminalOutput.text += "
+$ " + commandInput.text + "
+"
+                                    terminalOutput.text += result + "
+"
                                 }
                             }
                         }
                     }
 
+                    // TERMINAL OUTPUT
                     Rectangle {
-                        width: parent.width - 50
+                        width: parent.width - 40
                         height: 420
-                        radius: 18
+                        radius: 24
                         color: "#050505"
+                        border.color: "#2B2B2B"
+                        border.width: 2
 
                         ScrollView {
                             anchors.fill: parent
@@ -856,7 +1028,8 @@ $ docker logs nginx
                             TextArea {
                                 id: terminalOutput
                                 readOnly: true
-                                text: "Linux terminal ready...\n"
+                                text: "Linux terminal ready...
+"
                                 color: "#00FF99"
                                 font.family: "monospace"
                                 font.pixelSize: 16
@@ -872,3 +1045,5 @@ $ docker logs nginx
         }
     }
 }
+
+```
