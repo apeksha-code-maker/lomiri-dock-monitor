@@ -184,45 +184,149 @@ ApplicationWindow {
                     }
                 }
 
-               Rectangle {
+            
+Rectangle {
     color: "#121212"
 
     Column {
         anchors.centerIn: parent
-        spacing: 20
+        spacing: 30
 
         Text {
             text: "System Monitor"
             color: "white"
-            font.pixelSize: 32
+            font.pixelSize: 36
+            font.bold: true
         }
 
         Rectangle {
-            width: 400
-            height: 100
-            radius: 12
+            width: 520
+            height: 170
+            radius: 18
             color: "#1E1E1E"
 
             Column {
-                anchors.centerIn: parent
-                spacing: 10
+                anchors.fill: parent
+                anchors.margins: 20
+                spacing: 20
 
                 Text {
-                    text: "CPU Usage: 34%"
-                    color: "#4CAF50"
+                    text: "CPU Usage"
+                    color: "white"
                     font.pixelSize: 24
+                    font.bold: true
+                }
+
+                ProgressBar {
+                    value: 0.34
+                    width: 470
+                    height: 22
                 }
 
                 Text {
-                    text: "RAM Usage: 61%"
+                    text: "34%"
                     color: "#4CAF50"
+                    font.pixelSize: 22
+                }
+            }
+        }
+
+        Rectangle {
+            width: 520
+            height: 170
+            radius: 18
+            color: "#1E1E1E"
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 20
+                spacing: 20
+
+                Text {
+                    text: "RAM Usage"
+                    color: "white"
                     font.pixelSize: 24
+                    font.bold: true
+                }
+
+                ProgressBar {
+                    value: 0.61
+                    width: 470
+                    height: 22
+                }
+
+                Text {
+                    text: "61%"
+                    color: "#4CAF50"
+                    font.pixelSize: 22
+                }
+            }
+        }
+
+        Rectangle {
+            width: 520
+            height: 120
+            radius: 18
+            color: "#1E1E1E"
+
+            Row {
+                anchors.centerIn: parent
+                spacing: 60
+
+                Column {
+                    spacing: 10
+
+                    Text {
+                        text: "Containers"
+                        color: "white"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "4"
+                        color: "#4CAF50"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
+                }
+
+                Column {
+                    spacing: 10
+
+                    Text {
+                        text: "Images"
+                        color: "white"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "12"
+                        color: "#4CAF50"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
+                }
+
+                Column {
+                    spacing: 10
+
+                    Text {
+                        text: "Networks"
+                        color: "white"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "3"
+                        color: "#4CAF50"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
                 }
             }
         }
     }
 }
-
                 Rectangle {
                     color: "#121212"
 
