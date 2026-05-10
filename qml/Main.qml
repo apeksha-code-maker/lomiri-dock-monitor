@@ -119,28 +119,31 @@ ApplicationWindow {
                             color: "#AAAAAA"
                         }
 
-                        Row {
-                            spacing: 10
-Button {
-    text: "Start"
+Row {
+    spacing: 10
 
-    onClicked: {
-        console.log("Start button clicked")
+    Button {
+        text: "Start"
+
+        onClicked: {
+            console.log("Start button clicked")
+        }
     }
-}
-Button {
-    text: "Stop"
 
-    onClicked: {
-        console.log("Stop button clicked")
+    Button {
+        text: "Stop"
+
+        onClicked: {
+            console.log("Stop button clicked")
+        }
     }
-}
 
-                           Button {
-    text: "Logs"
+    Button {
+        text: "Logs"
 
-    onClicked: {
-        console.log("Logs button clicked")
+        onClicked: {
+            console.log("Logs button clicked")
+        }
     }
 }
                         }
