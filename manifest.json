@@ -1,0 +1,14 @@
+{
+    "name": "lomiridock.apek",
+    "description": "Docker Monitoring Dashboard",
+    "architecture": "all",
+    "title": "Lomiri Dock",
+    "hooks": {
+        "lomiridock": {
+            "apparmor": "lomiridock.apparmor",
+            "desktop": "lomiridock.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Apek"
+}
