@@ -1,4 +1,6 @@
 
+
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -413,26 +415,321 @@ $ docker logs nginx
             Rectangle {
                 color: "#0B0B0B"
 
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 20
+                Flickable {
+                    anchors.fill: parent
+                    contentWidth: parent.width
+                    contentHeight: 1100
+                    clip: true
 
-                    Text {
-                        text: "System Monitor"
-                        color: "white"
-                        font.pixelSize: 42
-                        font.bold: true
-                    }
+                    Column {
+                        width: parent.width
+                        spacing: 26
 
-                    ProgressBar {
-                        value: 0.34
-                        width: 500
-                    }
+                        anchors.top: parent.top
+                        anchors.topMargin: 24
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-                    Text {
-                        text: "CPU Usage: 34%"
-                        color: "#4CAF50"
-                        font.pixelSize: 24
+                        // HEADER
+                        Rectangle {
+                            width: parent.width - 60
+                            height: 140
+                            radius: 28
+                            gradient: Gradient {
+                                GradientStop { position: 0.0; color: "#1C1C1C" }
+                                GradientStop { position: 1.0; color: "#121212" }
+                            }
+                            border.color: "#2B2B2B"
+                            border.width: 1
+
+                            Row {
+                                anchors.fill: parent
+                                anchors.margins: 26
+                                spacing: 22
+
+                                Rectangle {
+                                    width: 82
+                                    height: 82
+                                    radius: 22
+                                    color: "#00BCD4"
+
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: "📊"
+                                        font.pixelSize: 42
+                                    }
+                                }
+
+                                Column {
+                                    spacing: 12
+                                    anchors.verticalCenter: parent.verticalCenter
+
+                                    Text {
+                                        text: "System Monitor"
+                                        color: "white"
+                                        font.pixelSize: 42
+                                        font.bold: true
+                                    }
+
+                                    Text {
+                                        text: "Track CPU, RAM, network and Docker statistics"
+                                        color: "#AAAAAA"
+                                        font.pixelSize: 18
+                                    }
+
+                                    Rectangle {
+                                        width: 150
+                                        height: 34
+                                        radius: 12
+                                        color: "#102027"
+
+                                        Row {
+                                            anchors.centerIn: parent
+                                            spacing: 8
+
+                                            Rectangle {
+                                                width: 10
+                                                height: 10
+                                                radius: 5
+                                                color: "#00E5FF"
+                                            }
+
+                                            Text {
+                                                text: "Live Monitoring"
+                                                color: "#00E5FF"
+                                                font.pixelSize: 14
+                                                font.bold: true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // SYSTEM CARDS
+                        Row {
+                            spacing: 22
+                            anchors.horizontalCenter: parent.horizontalCenter
+
+                            Rectangle {
+                                width: 260
+                                height: 180
+                                radius: 22
+                                color: "#171717"
+                                border.color: "#2C2C2C"
+                                border.width: 1
+
+                                Column {
+                                    anchors.centerIn: parent
+                                    spacing: 14
+
+                                    Text {
+                                        text: "CPU Usage"
+                                        color: "white"
+                                        font.pixelSize: 26
+                                        font.bold: true
+                                    }
+
+                                    ProgressBar {
+                                        value: 0.34
+                                        width: 180
+                                    }
+
+                                    Text {
+                                        text: "34%"
+                                        color: "#00E676"
+                                        font.pixelSize: 42
+                                        font.bold: true
+                                    }
+
+                                    Text {
+                                        text: "8 Cores Active"
+                                        color: "#AAAAAA"
+                                        font.pixelSize: 16
+                                    }
+                                }
+                            }
+
+                            Rectangle {
+                                width: 260
+                                height: 180
+                                radius: 22
+                                color: "#171717"
+                                border.color: "#2C2C2C"
+                                border.width: 1
+
+                                Column {
+                                    anchors.centerIn: parent
+                                    spacing: 14
+
+                                    Text {
+                                        text: "RAM Usage"
+                                        color: "white"
+                                        font.pixelSize: 26
+                                        font.bold: true
+                                    }
+
+                                    ProgressBar {
+                                        value: 0.61
+                                        width: 180
+                                    }
+
+                                    Text {
+                                        text: "61%"
+                                        color: "#00BCD4"
+                                        font.pixelSize: 42
+                                        font.bold: true
+                                    }
+
+                                    Text {
+                                        text: "6.1 GB / 10 GB"
+                                        color: "#AAAAAA"
+                                        font.pixelSize: 16
+                                    }
+                                }
+                            }
+
+                            Rectangle {
+                                width: 260
+                                height: 180
+                                radius: 22
+                                color: "#171717"
+                                border.color: "#2C2C2C"
+                                border.width: 1
+
+                                Column {
+                                    anchors.centerIn: parent
+                                    spacing: 14
+
+                                    Text {
+                                        text: "Network"
+                                        color: "white"
+                                        font.pixelSize: 26
+                                        font.bold: true
+                                    }
+
+                                    Text {
+                                        text: "120 Mbps"
+                                        color: "#FFC107"
+                                        font.pixelSize: 38
+                                        font.bold: true
+                                    }
+
+                                    Text {
+                                        text: "Download Speed"
+                                        color: "#AAAAAA"
+                                        font.pixelSize: 16
+                                    }
+
+                                    Text {
+                                        text: "Latency: 12 ms"
+                                        color: "#AAAAAA"
+                                        font.pixelSize: 14
+                                    }
+                                }
+                            }
+                        }
+
+                        // DOCKER STATS PANEL
+                        Rectangle {
+                            width: parent.width - 60
+                            height: 280
+                            radius: 24
+                            color: "#181818"
+                            border.color: "#2B2B2B"
+                            border.width: 1
+
+                            Column {
+                                anchors.fill: parent
+                                anchors.margins: 24
+                                spacing: 20
+
+                                Text {
+                                    text: "Docker Environment"
+                                    color: "white"
+                                    font.pixelSize: 32
+                                    font.bold: true
+                                }
+
+                                Row {
+                                    spacing: 26
+
+                                    Rectangle {
+                                        width: 180
+                                        height: 140
+                                        radius: 20
+                                        color: "#202020"
+
+                                        Column {
+                                            anchors.centerIn: parent
+                                            spacing: 10
+
+                                            Text {
+                                                text: "Containers"
+                                                color: "#AAAAAA"
+                                                font.pixelSize: 20
+                                            }
+
+                                            Text {
+                                                text: "4"
+                                                color: "#00E676"
+                                                font.pixelSize: 44
+                                                font.bold: true
+                                            }
+                                        }
+                                    }
+
+                                    Rectangle {
+                                        width: 180
+                                        height: 140
+                                        radius: 20
+                                        color: "#202020"
+
+                                        Column {
+                                            anchors.centerIn: parent
+                                            spacing: 10
+
+                                            Text {
+                                                text: "Images"
+                                                color: "#AAAAAA"
+                                                font.pixelSize: 20
+                                            }
+
+                                            Text {
+                                                text: "12"
+                                                color: "#00BCD4"
+                                                font.pixelSize: 44
+                                                font.bold: true
+                                            }
+                                        }
+                                    }
+
+                                    Rectangle {
+                                        width: 180
+                                        height: 140
+                                        radius: 20
+                                        color: "#202020"
+
+                                        Column {
+                                            anchors.centerIn: parent
+                                            spacing: 10
+
+                                            Text {
+                                                text: "Networks"
+                                                color: "#AAAAAA"
+                                                font.pixelSize: 20
+                                            }
+
+                                            Text {
+                                                text: "3"
+                                                color: "#FFC107"
+                                                font.pixelSize: 44
+                                                font.bold: true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
