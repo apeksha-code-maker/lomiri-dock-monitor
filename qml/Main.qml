@@ -346,13 +346,13 @@ onClicked: {
                         }
 
                      onClicked: {
-    var result = backend.stopContainer()
+                              var result = backend.stopContainer()
 
-    statusText.text = "Status: Stopped"
+                                 statusText.text = "Status: Stopped"
 
-    terminalOutput.text += "\n$ docker stop nginx-container\n"
-    terminalOutput.text += result + "\n"
-}
+                                terminalOutput.text += "\n$ docker stop nginx-container\n"
+                                 terminalOutput.text += result + "\n"
+                             }
                     }
 
                     
@@ -381,13 +381,12 @@ Button {
         verticalAlignment: Text.AlignVCenter
     }
 
-    onClicked: {
+   onClicked: {
+    var result = backend.runCommand("docker logs nginx")
 
-        var result = backend.getLogs()
-
-        terminalOutput.text += "\n$ docker logs nginx-container\n"
-        terminalOutput.text += result + "\n"
-    }
+    terminalOutput.text += "\n$ docker logs nginx\n"
+    terminalOutput.text += result + "\n"
+}
 }
                     }
                 }
@@ -1139,5 +1138,4 @@ Rectangle {
         }
     }
 }
-    }
-}
+    
