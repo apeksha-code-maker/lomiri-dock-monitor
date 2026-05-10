@@ -1,7 +1,8 @@
 import subprocess
 from PySide6.QtCore import QObject, Slot
 
-class CommandRunner(QObject):
+
+class Backend(QObject):
 
     @Slot(str, result=str)
     def runCommand(self, command):
@@ -18,10 +19,17 @@ class CommandRunner(QObject):
         except subprocess.CalledProcessError as e:
             return e.output
 
+
     @Slot(result=str)
     def startContainer(self):
         return self.runCommand("docker start nginx-container")
 
+
     @Slot(result=str)
     def stopContainer(self):
         return self.runCommand("docker stop nginx-container")
+
+
+    @Slot(result=str)
+    def getLogs(self):
+        return self.runCommand("docker logs nginx-container")
