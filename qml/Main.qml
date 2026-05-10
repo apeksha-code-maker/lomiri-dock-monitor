@@ -311,8 +311,12 @@ Rectangle {
                             verticalAlignment: Text.AlignVCenter
                         }
 onClicked: {
+    var result = backend.startContainer()
+
     statusText.text = "Status: Running"
-    console.log("Docker container started")
+
+    terminalOutput.text += "\n$ docker start nginx-container\n"
+    terminalOutput.text += result + "\n"
 }
                     }
 
@@ -341,10 +345,14 @@ onClicked: {
                             verticalAlignment: Text.AlignVCenter
                         }
 
-                       onClicked: {
-                          statusText.text = "Status: Stopped"
-                         console.log("Docker container stopped")
-                       }
+                     onClicked: {
+    var result = backend.stopContainer()
+
+    statusText.text = "Status: Stopped"
+
+    terminalOutput.text += "\n$ docker stop nginx-container\n"
+    terminalOutput.text += result + "\n"
+}
                     }
 
                     // LOGS BUTTON
