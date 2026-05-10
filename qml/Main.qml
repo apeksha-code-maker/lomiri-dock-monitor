@@ -513,7 +513,8 @@ Button {
         }
     }
 }
-        // MONITOR PAGE
+        
+
 // MONITOR PAGE
 Rectangle {
     color: "#0B0B0B"
@@ -810,7 +811,8 @@ Rectangle {
         }
     }
 }
-// LOGS PAGE
+
+
 // LOGS PAGE
 Rectangle {
     color: "#0B0B0B"
@@ -977,7 +979,8 @@ Flickable {
     }           // Logs Page Column
 }               // Logs Page Rectangle
 
-// COMMANDS PAGE
+
+
 // COMMANDS PAGE
 Rectangle {
     color: "#0B0B0B"
@@ -1144,5 +1147,6 @@ Rectangle {
     }
 }
 
-           }
+              }
 }
+} 
