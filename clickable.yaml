@@ -1,0 +1,15 @@
+clickable_minimum_required: 8.0.0
+
+builder: custom
+
+kill: qmlscene
+
+dependencies_host:
+  - python3
+  - python3-pip
+
+scripts:
+  build: |
+    echo "Build complete"
+
+launch: python3 main.py
