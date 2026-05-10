@@ -840,6 +840,7 @@ Flickable {
             }
         }
     }
+    }
         // COMMANDS PAGE
 // COMMANDS PAGE
 // COMMANDS PAGE
