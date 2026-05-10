@@ -327,7 +327,7 @@ Rectangle {
         }
     }
 }
-               Rectangle {
+              Rectangle {
     color: "#121212"
 
     Column {
@@ -336,63 +336,138 @@ Rectangle {
         spacing: 20
 
         Text {
-            text: "Docker Logs"
+            text: "Docker Logs Console"
             color: "white"
-            font.pixelSize: 34
+            font.pixelSize: 36
             font.bold: true
         }
 
         Rectangle {
             width: parent.width - 40
-            height: 500
-            radius: 14
-            color: "#0D0D0D"
+            height: 560
+            radius: 18
+            color: "#0A0A0A"
+            border.color: "#2E7D32"
+            border.width: 2
 
-            Flickable {
+            Column {
                 anchors.fill: parent
-                contentWidth: parent.width
-                contentHeight: logColumn.height + 20
-                clip: true
 
-                Column {
-                    id: logColumn
+                Rectangle {
                     width: parent.width
-                    spacing: 12
-                    anchors.margins: 20
+                    height: 50
+                    color: "#1A1A1A"
+                    radius: 18
 
-                    Text {
-                        text: "[INFO] Docker daemon started..."
-                        color: "#4CAF50"
-                        font.family: "monospace"
-                        font.pixelSize: 18
+                    Row {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
+                        spacing: 12
+
+                        Rectangle {
+                            width: 14
+                            height: 14
+                            radius: 7
+                            color: "#F44336"
+                        }
+
+                        Rectangle {
+                            width: 14
+                            height: 14
+                            radius: 7
+                            color: "#FFC107"
+                        }
+
+                        Rectangle {
+                            width: 14
+                            height: 14
+                            radius: 7
+                            color: "#4CAF50"
+                        }
+
+                        Text {
+                            text: "container_logs.sh"
+                            color: "#AAAAAA"
+                            font.pixelSize: 18
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                     }
+                }
 
-                    Text {
-                        text: "[INFO] nginx-container running"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+                Flickable {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.topMargin: 60
+                    anchors.bottom: parent.bottom
+                    clip: true
 
-                    Text {
-                        text: "[WARNING] CPU usage increased"
-                        color: "#FFC107"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+                    contentWidth: parent.width
+                    contentHeight: logColumn.height + 40
 
-                    Text {
-                        text: "[ERROR] Failed to connect to image registry"
-                        color: "#F44336"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+                    Column {
+                        id: logColumn
+                        width: parent.width - 40
+                        spacing: 16
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
 
-                    Text {
-                        text: "[INFO] Monitoring services active"
-                        color: "#4CAF50"
-                        font.family: "monospace"
-                        font.pixelSize: 18
+                        Text {
+                            text: "[07:45:10] [INFO] Docker daemon initialized"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:45:18] [INFO] nginx-container started"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:45:32] [WARNING] CPU usage spike detected"
+                            color: "#FFC107"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:45:40] [INFO] Monitoring service active"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:45:55] [ERROR] Failed image pull request"
+                            color: "#F44336"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:46:02] [INFO] Docker network connected"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:46:15] [INFO] Volume mounted successfully"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "[07:46:27] [WARNING] RAM usage increased"
+                            color: "#FFC107"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
                     }
                 }
             }
