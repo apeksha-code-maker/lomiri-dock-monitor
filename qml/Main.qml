@@ -11,11 +11,6 @@ ApplicationWindow {
 
     property int currentPage: 0
 
-    MessageDialog {
-        id: messageBox
-        title: "Docker Action"
-        text: "Action Executed"
-    }
 
     RowLayout {
         anchors.fill: parent
@@ -315,12 +310,10 @@ Rectangle {
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
-
-                        onClicked: {
-                            statusText.text = "Status: Running"
-                            messageBox.text = "Docker container started"
-                            messageBox.open()
-                        }
+onClicked: {
+    statusText.text = "Status: Running"
+    console.log("Docker container started")
+}
                     }
 
                     // STOP BUTTON
