@@ -1,17 +1,16 @@
 import subprocess
 
-def run_command(command):
-    try:
-        output = subprocess.check_output(
-            command,
-            shell=True,
-            text=True
-        )
-        return output
+class CommandRunner:
+    def runCommand(self, command):
+        try:
+            result = subprocess.check_output(
+                command,
+                shell=True,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
 
-    except subprocess.CalledProcessError as error:
-        return str(error)
+            return result
 
-
-if __name__ == "__main__":
-    print(run_command("docker ps"))
+        except subprocess.CalledProcessError as e:
+            return e.output
