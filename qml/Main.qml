@@ -90,59 +90,62 @@ ApplicationWindow {
                             font.pixelSize: 20
                         }
                     }
-Rectangle {
-    width: parent.width
-    height: 180
-    radius: 12
-    color: "#1E1E1E"
-
-    Column {
-        anchors.fill: parent
-        anchors.margins: 20
-        spacing: 10
-
-        Text {
-            text: "nginx-container"
-            color: "white"
-            font.pixelSize: 22
-        }
-
-        Text {
-            id: statusText
-            text: "Status: Stopped"
-            color: "#4CAF50"
-        }
-
-        Text {
-            text: "Image: nginx:latest"
-            color: "#AAAAAA"
-        }
-
-        Row {
-            spacing: 10
-
-            Button {
-                text: "Start"
-
-                onClicked: {
-                    statusText.text = "Status: Running"
                 }
-            }
 
-            Button {
-                text: "Stop"
+                Rectangle {
+                    width: parent.width
+                    height: 180
+                    radius: 12
+                    color: "#1E1E1E"
 
-                onClicked: {
-                    statusText.text = "Status: Stopped"
+                    Column {
+                        anchors.fill: parent
+                        anchors.margins: 20
+                        spacing: 10
+
+                        Text {
+                            text: "nginx-container"
+                            color: "white"
+                            font.pixelSize: 22
+                        }
+
+                        Text {
+                            id: statusText
+                            text: "Status: Stopped"
+                            color: "#4CAF50"
+                        }
+
+                        Text {
+                            text: "Image: nginx:latest"
+                            color: "#AAAAAA"
+                        }
+
+                        Row {
+                            spacing: 10
+
+                            Button {
+                                text: "Start"
+
+                                onClicked: {
+                                    statusText.text = "Status: Running"
+                                }
+                            }
+
+                            Button {
+                                text: "Stop"
+
+                                onClicked: {
+                                    statusText.text = "Status: Stopped"
+                                }
+                            }
+
+                            Button {
+                                text: "Logs"
+                            }
+                        }
+                    }
                 }
-            }
-
-            Button {
-                text: "Logs"
             }
         }
     }
 }
-                }
-
-               
