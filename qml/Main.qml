@@ -502,97 +502,95 @@ Column {
                 color: "#1E1E1E"
             }
 
-            Flickable {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.topMargin: 10
-                anchors.bottom: parent.bottom
-                clip: true
+          
+Flickable {
+    anchors.fill: parent
+    clip: true
 
-                contentWidth: parent.width
-                contentHeight: logsColumn.height + 40
+    contentWidth: width
+    contentHeight: logsColumn.height + 40
 
-                Column {
-                    id: logsColumn
-                    spacing: 18
-                    width: parent.width
+    Column {
+        id: logsColumn
+        width: parent.width - 40
+        spacing: 18
 
-                    Text {
-                        text: "[07:45:10] [INFO] Docker daemon initialized"
-                        color: "#00C853"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        anchors.top: parent.top
+        anchors.topMargin: 20
 
-                    Text {
-                        text: "[07:45:18] [INFO] nginx-container started"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:45:10] [INFO] Docker daemon initialized"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:45:32] [WARNING] CPU usage spike detected"
-                        color: "#FFD600"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:45:18] [INFO] nginx-container started"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:45:40] [INFO] Monitoring service active"
-                        color: "#00C853"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:45:32] [WARNING] CPU usage spike detected"
+            color: "#FFD600"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:45:55] [ERROR] Failed image pull request"
-                        color: "#FF3D00"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:45:40] [INFO] Monitoring service active"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:46:02] [INFO] Docker network connected"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:45:55] [ERROR] Failed image pull request"
+            color: "#FF3D00"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:46:15] [INFO] Volume mounted successfully"
-                        color: "#00C853"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:46:02] [INFO] Docker network connected"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:46:27] [WARNING] RAM usage increased"
-                        color: "#FFD600"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:46:15] [INFO] Volume mounted successfully"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:46:41] [INFO] Container restart completed"
-                        color: "#00C853"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
+        Text {
+            text: "[07:46:27] [WARNING] RAM usage increased"
+            color: "#FFD600"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                    Text {
-                        text: "[07:46:58] [INFO] Docker stats updated"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 20
-                    }
-                }
-            }
+        Text {
+            text: "[07:46:41] [INFO] Container restart completed"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
+
+        Text {
+            text: "[07:46:58] [INFO] Docker stats updated"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
         }
     }
 }
-}
-
         // COMMANDS PAGE
 // COMMANDS PAGE
 Rectangle {
@@ -719,92 +717,91 @@ Column {
                 color: "#1F1F1F"
             }
 
-            Flickable {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.topMargin: 10
-                anchors.bottom: parent.bottom
-                clip: true
+          Flickable {
+    anchors.fill: parent
+    clip: true
 
-                contentWidth: parent.width
-                contentHeight: terminalColumn.height + 40
+    contentWidth: width
+    contentHeight: terminalColumn.height + 40
 
-                Column {
-                    id: terminalColumn
-                    spacing: 16
-                    width: parent.width
+    Column {
+        id: terminalColumn
+        width: parent.width - 40
+        spacing: 16
 
-                    Text {
-                        text: "$ docker ps"
-                        color: "#00FF99"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        anchors.top: parent.top
+        anchors.topMargin: 20
 
-                    Text {
-                        text: "CONTAINER ID      IMAGE        STATUS"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "$ docker ps"
+            color: "#00FF99"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "7ad21f4d91       nginx        Running"
-                        color: "#4CAF50"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "CONTAINER ID      IMAGE        STATUS"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "$ docker images"
-                        color: "#00FF99"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "7ad21f4d91       nginx        Running"
+            color: "#4CAF50"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "REPOSITORY        TAG         SIZE"
-                        color: "white"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "$ docker images"
+            color: "#00FF99"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "nginx             latest      187MB"
-                        color: "#4CAF50"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "REPOSITORY        TAG         SIZE"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "$ systemctl status docker"
-                        color: "#00FF99"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "nginx             latest      187MB"
+            color: "#4CAF50"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "Docker service active (running)"
-                        color: "#4CAF50"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "$ systemctl status docker"
+            color: "#00FF99"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "$ docker stats"
-                        color: "#00FF99"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
+        Text {
+            text: "Docker service active (running)"
+            color: "#4CAF50"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
 
-                    Text {
-                        text: "CPU: 34%   RAM: 61%   NET: ACTIVE"
-                        color: "#00BCD4"
-                        font.family: "monospace"
-                        font.pixelSize: 18
-                    }
-                }
-            }
+        Text {
+            text: "$ docker stats"
+            color: "#00FF99"
+            font.family: "monospace"
+            font.pixelSize: 18
+        }
+
+        Text {
+            text: "CPU: 34%   RAM: 61%   NET: ACTIVE"
+            color: "#00BCD4"
+            font.family: "monospace"
+            font.pixelSize: 18
         }
     }
 }
