@@ -1,9 +1,13 @@
 clickable_minimum_required: 8.0.0
 
-builder: custom
-
-build: echo "Build completed"
-
-launch: python3 main.py
+builder: pure
 
 kill: python3
+
+scripts:
+  build:
+    - echo "Building Lomiri Dock"
+
+desktop:
+  mode: custom
+  command: python3 main.py
