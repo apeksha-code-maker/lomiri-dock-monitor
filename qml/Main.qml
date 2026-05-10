@@ -1113,7 +1113,6 @@ Rectangle {
                     height: 1
                     color: "#1F1F1F"
                 }
-
                 ScrollView {
                     width: parent.width
                     height: 400
@@ -1138,9 +1137,8 @@ Rectangle {
                 }
             }
         }
-                  
-         }
     }
 }
+        }
     }
 }
