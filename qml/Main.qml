@@ -179,221 +179,629 @@ ApplicationWindow {
             }
 
             // MONITOR PAGE
+// MONITOR PAGE
+Rectangle {
+    color: "#0B0B0B"
+
+    Flickable {
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: 900
+        clip: true
+
+        Column {
+            width: parent.width
+            spacing: 28
+            anchors.top: parent.top
+            anchors.topMargin: 30
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            Text {
+                text: "System Monitor"
+                color: "white"
+                font.pixelSize: 42
+                font.bold: true
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            // CPU CARD
             Rectangle {
-                color: "#121212"
+                width: 620
+                height: 180
+                radius: 22
+                color: "#171717"
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Column {
-                    anchors.centerIn: parent
-                    spacing: 30
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 22
 
                     Text {
-                        text: "System Monitor"
+                        text: "CPU Usage"
                         color: "white"
-                        font.pixelSize: 36
+                        font.pixelSize: 30
                         font.bold: true
                     }
 
-                    Rectangle {
-                        width: 520
-                        height: 170
-                        radius: 18
-                        color: "#1E1E1E"
-
-                        Column {
-                            anchors.fill: parent
-                            anchors.margins: 20
-                            spacing: 20
-
-                            Text {
-                                text: "CPU Usage"
-                                color: "white"
-                                font.pixelSize: 24
-                                font.bold: true
-                            }
-
-                            ProgressBar {
-                                value: 0.34
-                                width: 470
-                                height: 22
-                            }
-
-                            Text {
-                                text: "34%"
-                                color: "#4CAF50"
-                                font.pixelSize: 22
-                            }
-                        }
+                    ProgressBar {
+                        value: 0.34
+                        width: 560
+                        height: 24
                     }
 
-                    Rectangle {
-                        width: 520
-                        height: 170
-                        radius: 18
-                        color: "#1E1E1E"
+                    Row {
+                        spacing: 20
 
-                        Column {
-                            anchors.fill: parent
-                            anchors.margins: 20
-                            spacing: 20
+                        Text {
+                            text: "Usage: 34%"
+                            color: "#4CAF50"
+                            font.pixelSize: 22
+                        }
 
-                            Text {
-                                text: "RAM Usage"
-                                color: "white"
-                                font.pixelSize: 24
-                                font.bold: true
-                            }
-
-                            ProgressBar {
-                                value: 0.61
-                                width: 470
-                                height: 22
-                            }
-
-                            Text {
-                                text: "61%"
-                                color: "#4CAF50"
-                                font.pixelSize: 22
-                            }
+                        Text {
+                            text: "Cores: 8"
+                            color: "#AAAAAA"
+                            font.pixelSize: 22
                         }
                     }
                 }
             }
 
-            // LOGS PAGE
+            // RAM CARD
             Rectangle {
-                color: "#121212"
+                width: 620
+                height: 180
+                radius: 22
+                color: "#171717"
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 20
-                    spacing: 20
+                    anchors.margins: 24
+                    spacing: 22
 
                     Text {
-                        text: "Docker Logs Console"
+                        text: "RAM Usage"
                         color: "white"
-                        font.pixelSize: 36
+                        font.pixelSize: 30
                         font.bold: true
                     }
 
-                    Rectangle {
-                        width: parent.width - 40
-                        height: 500
-                        radius: 18
-                        color: "#0A0A0A"
-                        border.color: "#2E7D32"
-                        border.width: 2
+                    ProgressBar {
+                        value: 0.61
+                        width: 560
+                        height: 24
+                    }
 
-                        Flickable {
-                            anchors.fill: parent
-                            contentWidth: parent.width
-                            contentHeight: logColumn.height + 40
-                            clip: true
+                    Row {
+                        spacing: 20
 
-                            Column {
-                                id: logColumn
-                                spacing: 16
-                                anchors.margins: 20
+                        Text {
+                            text: "Used: 6.1 GB"
+                            color: "#4CAF50"
+                            font.pixelSize: 22
+                        }
 
-                                Text {
-                                    text: "[INFO] Docker daemon initialized"
-                                    color: "#4CAF50"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "[INFO] nginx-container started"
-                                    color: "white"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "[WARNING] CPU usage spike detected"
-                                    color: "#FFC107"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "[ERROR] Failed image pull request"
-                                    color: "#F44336"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-                            }
+                        Text {
+                            text: "Total: 10 GB"
+                            color: "#AAAAAA"
+                            font.pixelSize: 22
                         }
                     }
                 }
             }
 
-            // COMMANDS PAGE
+            // NETWORK CARD
             Rectangle {
-                color: "#121212"
+                width: 620
+                height: 180
+                radius: 22
+                color: "#171717"
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 20
-                    spacing: 20
+                    anchors.margins: 24
+                    spacing: 18
 
                     Text {
-                        text: "Linux Command Console"
+                        text: "Network Activity"
                         color: "white"
-                        font.pixelSize: 36
+                        font.pixelSize: 30
                         font.bold: true
                     }
 
                     Row {
+                        spacing: 60
+
+                        Column {
+                            spacing: 10
+
+                            Text {
+                                text: "Download"
+                                color: "#AAAAAA"
+                                font.pixelSize: 20
+                            }
+
+                            Text {
+                                text: "120 Mbps"
+                                color: "#00BCD4"
+                                font.pixelSize: 28
+                                font.bold: true
+                            }
+                        }
+
+                        Column {
+                            spacing: 10
+
+                            Text {
+                                text: "Upload"
+                                color: "#AAAAAA"
+                                font.pixelSize: 20
+                            }
+
+                            Text {
+                                text: "42 Mbps"
+                                color: "#4CAF50"
+                                font.pixelSize: 28
+                                font.bold: true
+                            }
+                        }
+                    }
+                }
+            }
+
+            // DOCKER STATS
+            Row {
+                spacing: 22
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+
+                    Column {
+                        anchors.centerIn: parent
                         spacing: 10
 
                         Text {
-                            text: "user@lomiri:~$"
-                            color: "#00FF99"
+                            text: "Containers"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "4"
+                            color: "#4CAF50"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+
+                    Column {
+                        anchors.centerIn: parent
+                        spacing: 10
+
+                        Text {
+                            text: "Images"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "12"
+                            color: "#00BCD4"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+
+                    Column {
+                        anchors.centerIn: parent
+                        spacing: 10
+
+                        Text {
+                            text: "Networks"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "3"
+                            color: "#FFC107"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+          // LOGS PAGE
+Rectangle {
+    color: "#0B0B0B"
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 25
+        spacing: 22
+
+        Text {
+            text: "Docker Logs Console"
+            color: "white"
+            font.pixelSize: 38
+            font.bold: true
+        }
+
+        Rectangle {
+            width: parent.width - 50
+            height: 560
+            radius: 18
+            color: "#050505"
+            border.color: "#00C853"
+            border.width: 2
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 18
+                spacing: 16
+
+                // Terminal Header
+                Row {
+                    spacing: 10
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
+
+                    Text {
+                        text: "docker-logs-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                    }
+                }
+
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1E1E1E"
+                }
+
+                Flickable {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.topMargin: 10
+                    anchors.bottom: parent.bottom
+                    clip: true
+
+                    contentWidth: parent.width
+                    contentHeight: logsColumn.height + 40
+
+                    Column {
+                        id: logsColumn
+                        spacing: 18
+                        width: parent.width
+
+                        Text {
+                            text: "[07:45:10] [INFO] Docker daemon initialized"
+                            color: "#00C853"
                             font.family: "monospace"
                             font.pixelSize: 20
                         }
 
-                        TextField {
-                            width: 500
-                            placeholderText: "Enter Linux command..."
+                        Text {
+                            text: "[07:45:18] [INFO] nginx-container started"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
                         }
 
-                        Button {
-                            text: "Execute"
+                        Text {
+                            text: "[07:45:32] [WARNING] CPU usage spike detected"
+                            color: "#FFD600"
+                            font.family: "monospace"
+                            font.pixelSize: 20
                         }
+
+                        Text {
+                            text: "[07:45:40] [INFO] Monitoring service active"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:45:55] [ERROR] Failed image pull request"
+                            color: "#FF3D00"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:02] [INFO] Docker network connected"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:15] [INFO] Volume mounted successfully"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:27] [WARNING] RAM usage increased"
+                            color: "#FFD600"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:41] [INFO] Container restart completed"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:58] [INFO] Docker stats updated"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+            // COMMANDS PAGE
+// COMMANDS PAGE
+Rectangle {
+    color: "#0B0B0B"
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 25
+        spacing: 22
+
+        Text {
+            text: "Linux Command Console"
+            color: "white"
+            font.pixelSize: 38
+            font.bold: true
+        }
+
+        Rectangle {
+            width: parent.width - 50
+            height: 60
+            radius: 14
+            color: "#111111"
+            border.color: "#00FF99"
+            border.width: 1
+
+            Row {
+                anchors.fill: parent
+                anchors.margins: 12
+                spacing: 12
+
+                Text {
+                    text: "user@lomiri:~$"
+                    color: "#00FF99"
+                    font.family: "monospace"
+                    font.pixelSize: 22
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                TextField {
+                    id: commandInput
+                    width: 520
+                    height: 36
+                    placeholderText: "Enter Linux command..."
+                    text: "sudo apt update"
+                    font.pixelSize: 18
+                    color: "white"
+
+                    background: Rectangle {
+                        radius: 8
+                        color: "#1A1A1A"
+                        border.color: "#333333"
+                    }
+                }
+
+                Button {
+                    text: "Execute"
+                    width: 120
+                    height: 38
+
+                    background: Rectangle {
+                        radius: 10
+                        color: "#00C853"
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 16
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            width: parent.width - 50
+            height: 500
+            radius: 18
+            color: "#050505"
+            border.color: "#222222"
+            border.width: 2
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 20
+                spacing: 18
+
+                Row {
+                    spacing: 10
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
                     }
 
                     Rectangle {
-                        width: parent.width - 40
-                        height: 400
-                        radius: 12
-                        color: "#111111"
-                        border.color: "#333333"
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
 
-                        Column {
-                            anchors.margins: 20
-                            spacing: 14
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
 
-                            Text {
-                                text: "$ docker ps"
-                                color: "#00FF99"
-                                font.family: "monospace"
-                                font.pixelSize: 18
-                            }
+                    Text {
+                        text: "docker-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                    }
+                }
 
-                            Text {
-                                text: "CONTAINER ID   IMAGE   STATUS"
-                                color: "white"
-                                font.family: "monospace"
-                                font.pixelSize: 18
-                            }
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1F1F1F"
+                }
 
-                            Text {
-                                text: "7ad21f        nginx   Running"
-                                color: "#4CAF50"
-                                font.family: "monospace"
-                                font.pixelSize: 18
-                            }
+                Flickable {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.topMargin: 10
+                    anchors.bottom: parent.bottom
+                    clip: true
+
+                    contentWidth: parent.width
+                    contentHeight: terminalColumn.height + 40
+
+                    Column {
+                        id: terminalColumn
+                        spacing: 16
+                        width: parent.width
+
+                        Text {
+                            text: "$ docker ps"
+                            color: "#00FF99"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "CONTAINER ID      IMAGE        STATUS"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "7ad21f4d91       nginx        Running"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "$ docker images"
+                            color: "#00FF99"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "REPOSITORY        TAG         SIZE"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "nginx             latest      187MB"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "$ systemctl status docker"
+                            color: "#00FF99"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "Docker service active (running)"
+                            color: "#4CAF50"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "$ docker stats"
+                            color: "#00FF99"
+                            font.family: "monospace"
+                            font.pixelSize: 18
+                        }
+
+                        Text {
+                            text: "CPU: 34%   RAM: 61%   NET: ACTIVE"
+                            color: "#00BCD4"
+                            font.family: "monospace"
+                            font.pixelSize: 18
                         }
                     }
                 }
