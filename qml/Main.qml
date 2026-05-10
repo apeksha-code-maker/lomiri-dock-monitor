@@ -843,7 +843,6 @@ Flickable {
     }
         // COMMANDS PAGE
 // COMMANDS PAGE
-// COMMANDS PAGE
 Rectangle {
     color: "#0B0B0B"
 
@@ -859,7 +858,6 @@ Rectangle {
             font.bold: true
         }
 
-        // COMMAND INPUT BAR
         Rectangle {
             width: parent.width - 50
             height: 60
@@ -883,7 +881,6 @@ Rectangle {
 
                 TextField {
                     id: commandInput
-
                     width: 520
                     height: 36
 
@@ -920,16 +917,92 @@ Rectangle {
                     }
 
                     onClicked: {
-
                         var result = backend.runCommand(commandInput.text)
 
                         terminalOutput.text += "\n$ " + commandInput.text + "\n"
-
                         terminalOutput.text += result + "\n"
                     }
                 }
             }
         }
+
+        Rectangle {
+            width: parent.width - 50
+            height: 500
+            radius: 18
+            color: "#050505"
+            border.color: "#222222"
+            border.width: 2
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 18
+                spacing: 16
+
+                Row {
+                    spacing: 10
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
+
+                    Text {
+                        text: "linux-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                    }
+                }
+
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1F1F1F"
+                }
+
+                ScrollView {
+                    width: parent.width
+                    height: 400
+
+                    TextArea {
+                        id: terminalOutput
+
+                        readOnly: true
+                        text: "Linux terminal ready...\n"
+
+                        color: "#00FF99"
+                        font.family: "monospace"
+                        font.pixelSize: 16
+                        wrapMode: Text.Wrap
+
+                        background: Rectangle {
+                            color: "#050505"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+}
+}
 
                // TERMINAL OUTPUT
         Rectangle {
