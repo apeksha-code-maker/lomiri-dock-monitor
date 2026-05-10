@@ -967,10 +967,10 @@ Flickable {
             font.family: "monospace"
             font.pixelSize: 20
         }
+ 
     }
 }
-        
-               }
+            }
         }
     }
 }
