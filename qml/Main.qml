@@ -142,7 +142,7 @@ Button {
         Layout.fillWidth: true
         Layout.fillHeight: true
         currentIndex: currentPage
-}
+
 // DASHBOARD PAGE
 // DASHBOARD PAGE
 Rectangle {
