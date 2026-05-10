@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Dialogs
 
 ApplicationWindow {
     visible: true
@@ -8,6 +9,12 @@ ApplicationWindow {
     height: 700
     title: "LomiriDock Monitor"
     color: "#121212"
+
+    MessageDialog {
+        id: messageBox
+        title: "Docker Action"
+        text: "Action Executed"
+    }
 
     RowLayout {
         anchors.fill: parent
@@ -128,6 +135,8 @@ ApplicationWindow {
 
                                 onClicked: {
                                     statusText.text = "Status: Running"
+                                    messageBox.text = "Docker container started"
+                                    messageBox.open()
                                 }
                             }
 
@@ -136,11 +145,18 @@ ApplicationWindow {
 
                                 onClicked: {
                                     statusText.text = "Status: Stopped"
+                                    messageBox.text = "Docker container stopped"
+                                    messageBox.open()
                                 }
                             }
 
                             Button {
                                 text: "Logs"
+
+                                onClicked: {
+                                    messageBox.text = "Opening container logs"
+                                    messageBox.open()
+                                }
                             }
                         }
                     }
