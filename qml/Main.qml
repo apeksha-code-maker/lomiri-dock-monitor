@@ -1,12 +1,22 @@
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 
-import QtQuick 2.4
-import Lomiri.Components 1.3
+ApplicationWindow {
+    visible: true
+    width: 1200
+    height: 700
+    title: "LomiriDock Monitor"
 
-MainView {
-    width: units.gu(100)
-    height: units.gu(70)
+    Rectangle {
+        anchors.fill: parent
+        color: "#121212"
 
-    Page {
-        title: "LomiriDock Monitor"
+        Text {
+            text: "LomiriDock Monitor"
+            color: "white"
+            font.pixelSize: 30
+            anchors.centerIn: parent
+        }
     }
 }
