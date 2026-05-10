@@ -591,6 +591,10 @@ Flickable {
         }
     }
 }
+                }
+            }
+        }
+    }
         // COMMANDS PAGE
 // COMMANDS PAGE
 Rectangle {
