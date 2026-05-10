@@ -10,6 +10,8 @@ ApplicationWindow {
     title: "LomiriDock Monitor"
     color: "#121212"
 
+    property int currentPage: 0
+
     MessageDialog {
         id: messageBox
         title: "Docker Action"
@@ -40,21 +42,37 @@ ApplicationWindow {
                 Button {
                     text: "Dashboard"
                     width: 160
+
+                    onClicked: {
+                        currentPage = 0
+                    }
                 }
 
                 Button {
                     text: "Monitor"
                     width: 160
+
+                    onClicked: {
+                        currentPage = 1
+                    }
                 }
 
                 Button {
                     text: "Logs"
                     width: 160
+
+                    onClicked: {
+                        currentPage = 2
+                    }
                 }
 
                 Button {
                     text: "Commands"
                     width: 160
+
+                    onClicked: {
+                        currentPage = 3
+                    }
                 }
             }
         }
@@ -64,101 +82,138 @@ ApplicationWindow {
             Layout.fillHeight: true
             color: "#121212"
 
-            Column {
+            StackLayout {
                 anchors.fill: parent
-                anchors.margins: 20
-                spacing: 20
+                currentIndex: currentPage
 
-                Text {
-                    text: "LomiriDock Monitor"
-                    color: "white"
-                    font.pixelSize: 32
-                }
+                Column {
+                    anchors.margins: 20
+                    spacing: 20
 
-                Rectangle {
-                    width: parent.width
-                    height: 120
-                    radius: 12
-                    color: "#1E1E1E"
+                    Text {
+                        text: "LomiriDock Monitor"
+                        color: "white"
+                        font.pixelSize: 32
+                    }
 
-                    Column {
-                        anchors.centerIn: parent
-                        spacing: 10
+                    Rectangle {
+                        width: 850
+                        height: 120
+                        radius: 12
+                        color: "#1E1E1E"
 
-                        Text {
-                            text: "Docker Status"
-                            color: "white"
-                            font.pixelSize: 24
+                        Column {
+                            anchors.centerIn: parent
+                            spacing: 10
+
+                            Text {
+                                text: "Docker Status"
+                                color: "white"
+                                font.pixelSize: 24
+                            }
+
+                            Text {
+                                text: "Running Containers: 0"
+                                color: "#4CAF50"
+                                font.pixelSize: 20
+                            }
                         }
+                    }
 
-                        Text {
-                            text: "Running Containers: 0"
-                            color: "#4CAF50"
-                            font.pixelSize: 20
+                    Rectangle {
+                        width: 850
+                        height: 180
+                        radius: 12
+                        color: "#1E1E1E"
+
+                        Column {
+                            anchors.fill: parent
+                            anchors.margins: 20
+                            spacing: 10
+
+                            Text {
+                                text: "nginx-container"
+                                color: "white"
+                                font.pixelSize: 22
+                            }
+
+                            Text {
+                                id: statusText
+                                text: "Status: Stopped"
+                                color: "#4CAF50"
+                            }
+
+                            Text {
+                                text: "Image: nginx:latest"
+                                color: "#AAAAAA"
+                            }
+
+                            Row {
+                                spacing: 10
+
+                                Button {
+                                    text: "Start"
+
+                                    onClicked: {
+                                        statusText.text = "Status: Running"
+                                        messageBox.text = "Docker container started"
+                                        messageBox.open()
+                                    }
+                                }
+
+                                Button {
+                                    text: "Stop"
+
+                                    onClicked: {
+                                        statusText.text = "Status: Stopped"
+                                        messageBox.text = "Docker container stopped"
+                                        messageBox.open()
+                                    }
+                                }
+
+                                Button {
+                                    text: "Logs"
+
+                                    onClicked: {
+                                        messageBox.text = "Opening container logs"
+                                        messageBox.open()
+                                    }
+                                }
+                            }
                         }
                     }
                 }
 
                 Rectangle {
-                    width: parent.width
-                    height: 180
-                    radius: 12
-                    color: "#1E1E1E"
+                    color: "#121212"
 
-                    Column {
-                        anchors.fill: parent
-                        anchors.margins: 20
-                        spacing: 10
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Monitor Page"
+                        color: "white"
+                        font.pixelSize: 30
+                    }
+                }
 
-                        Text {
-                            text: "nginx-container"
-                            color: "white"
-                            font.pixelSize: 22
-                        }
+                Rectangle {
+                    color: "#121212"
 
-                        Text {
-                            id: statusText
-                            text: "Status: Stopped"
-                            color: "#4CAF50"
-                        }
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Logs Page"
+                        color: "white"
+                        font.pixelSize: 30
+                    }
+                }
 
-                        Text {
-                            text: "Image: nginx:latest"
-                            color: "#AAAAAA"
-                        }
+                Rectangle {
+                    color: "#121212"
 
-                        Row {
-                            spacing: 10
-
-                            Button {
-                                text: "Start"
-
-                                onClicked: {
-                                    statusText.text = "Status: Running"
-                                    messageBox.text = "Docker container started"
-                                    messageBox.open()
-                                }
-                            }
-
-                            Button {
-                                text: "Stop"
-
-                                onClicked: {
-                                    statusText.text = "Status: Stopped"
-                                    messageBox.text = "Docker container stopped"
-                                    messageBox.open()
-                                }
-                            }
-
-                            Button {
-                                text: "Logs"
-
-                                onClicked: {
-                                    messageBox.text = "Opening container logs"
-                                    messageBox.open()
-                                }
-                            }
-                        }
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Commands Page"
+                        color: "white"
+                        font.pixelSize: 30
                     }
                 }
             }
