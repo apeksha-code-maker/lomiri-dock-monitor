@@ -868,98 +868,96 @@ Rectangle {
                 }
 
                 // LOG OUTPUT AREA
-                Flickable {
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.topMargin: 10
-                    anchors.bottom: parent.bottom
+Flickable {
+    width: parent.width
+    height: 460
+    clip: true
 
-                    clip: true
+    contentWidth: width
+    contentHeight: logsColumn.height + 40
 
-                    contentWidth: width
-                    contentHeight: logsColumn.height + 40
+    Column {
+        id: logsColumn
 
-                    Column {
-                        id: logsColumn
+        width: parent.width - 40
+        spacing: 18
 
-                        width: parent.width - 40
-                        spacing: 18
+        anchors.left: parent.left
+        anchors.leftMargin: 20
 
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
+        Text {
+            text: "[07:45:10] [INFO] Docker daemon initialized"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:45:10] [INFO] Docker daemon initialized"
-                            color: "#00C853"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:45:18] [INFO] nginx-container started"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:45:18] [INFO] nginx-container started"
-                            color: "white"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:45:32] [WARNING] CPU usage spike detected"
+            color: "#FFD600"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:45:32] [WARNING] CPU usage spike detected"
-                            color: "#FFD600"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:45:40] [INFO] Monitoring service active"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:45:40] [INFO] Monitoring service active"
-                            color: "#00C853"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:45:55] [ERROR] Failed image pull request"
+            color: "#FF3D00"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:45:55] [ERROR] Failed image pull request"
-                            color: "#FF3D00"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:46:02] [INFO] Docker network connected"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:46:02] [INFO] Docker network connected"
-                            color: "white"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:46:15] [INFO] Volume mounted successfully"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:46:15] [INFO] Volume mounted successfully"
-                            color: "#00C853"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:46:27] [WARNING] RAM usage increased"
+            color: "#FFD600"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:46:27] [WARNING] RAM usage increased"
-                            color: "#FFD600"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
+        Text {
+            text: "[07:46:41] [INFO] Container restart completed"
+            color: "#00C853"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
 
-                        Text {
-                            text: "[07:46:41] [INFO] Container restart completed"
-                            color: "#00C853"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
-
-                        Text {
-                            text: "[07:46:58] [INFO] Docker stats updated"
-                            color: "white"
-                            font.family: "monospace"
-                            font.pixelSize: 20
-                        }
-                    }
-                }
-            }
+        Text {
+            text: "[07:46:58] [INFO] Docker stats updated"
+            color: "white"
+            font.family: "monospace"
+            font.pixelSize: 20
+        }
+    }
+}
+        
+               }
         }
     }
 }
