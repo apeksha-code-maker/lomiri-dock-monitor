@@ -142,114 +142,287 @@ Button {
         Layout.fillWidth: true
         Layout.fillHeight: true
         currentIndex: currentPage
+}
+// DASHBOARD PAGE
+// DASHBOARD PAGE
+Rectangle {
+    color: "#121212"
 
-        // DASHBOARD PAGE
+    Column {
+        anchors.margins: 20
+        anchors.fill: parent
+        spacing: 20
+
+        Text {
+            text: "Docker Dashboard"
+            color: "white"
+            font.pixelSize: 42
+            font.bold: true
+            font.letterSpacing: 1
+        }
+
+        // DOCKER STATUS CARD
         Rectangle {
-            color: "#121212"
+            width: 850
+            height: 120
+            radius: 16
+            color: "#1E1E1E"
 
             Column {
-                anchors.margins: 20
+                anchors.centerIn: parent
+                spacing: 10
+
+                Text {
+                    text: "Docker Status"
+                    color: "white"
+                    font.pixelSize: 26
+                    font.bold: true
+                }
+
+                Text {
+                    text: "Running Containers: 4"
+                    color: "#4CAF50"
+                    font.pixelSize: 22
+                }
+            }
+        }
+
+        // MAIN CONTAINER CARD
+        Rectangle {
+            width: 850
+            height: 220
+            radius: 16
+            color: "#1E1E1E"
+
+            Column {
                 anchors.fill: parent
-                spacing: 20
+                anchors.margins: 20
+                spacing: 14
 
-              Text {
-    text: "Docker Dashboard"
-    color: "white"
-    font.pixelSize: 42
-    font.bold: true
-    font.letterSpacing: 1
-}
-                Rectangle {
-                    width: 850
-                    height: 120
-                    radius: 12
-                    color: "#1E1E1E"
+                Row {
+                    spacing: 10
 
-                    Column {
-                        anchors.centerIn: parent
-                        spacing: 10
+                    Rectangle {
+                        width: 12
+                        height: 12
+                        radius: 6
+                        color: "#00C853"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
 
-                        Text {
-                            text: "Docker Status"
-                            color: "white"
-                            font.pixelSize: 24
-                        }
-
-                        Text {
-                            text: "Running Containers: 4"
-                            color: "#4CAF50"
-                            font.pixelSize: 20
-                        }
+                    Text {
+                        text: "nginx-container"
+                        color: "white"
+                        font.pixelSize: 28
+                        font.bold: true
                     }
                 }
 
-                Rectangle {
-                    width: 850
-                    height: 200
-                    radius: 12
-                    color: "#1E1E1E"
+                Text {
+                    id: statusText
+                    text: "Status: Running"
+                    color: "#4CAF50"
+                    font.pixelSize: 20
+                }
 
-                    Column {
-                        anchors.fill: parent
-                        anchors.margins: 20
-                        spacing: 12
+                Text {
+                    text: "Image: nginx:latest"
+                    color: "#AAAAAA"
+                    font.pixelSize: 18
+                }
 
-                        Text {
-                            text: "nginx-container"
+                Text {
+                    text: "Port: 80:8080"
+                    color: "#AAAAAA"
+                    font.pixelSize: 18
+                }
+
+                Row {
+                    spacing: 14
+
+                    Button {
+                        text: "Start"
+                        width: 120
+                        height: 42
+
+                        background: Rectangle {
+                            radius: 10
+                            color: "#00C853"
+                        }
+
+                        contentItem: Text {
+                            text: parent.text
                             color: "white"
-                            font.pixelSize: 24
+                            font.bold: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
                         }
 
-                        Text {
-                            id: statusText
-                            text: "Status: Running"
-                            color: "#4CAF50"
-                            font.pixelSize: 18
+                        onClicked: {
+                            statusText.text = "Status: Running"
+                            messageBox.text = "Docker container started"
+                            messageBox.open()
+                        }
+                    }
+
+                    Button {
+                        text: "Stop"
+                        width: 120
+                        height: 42
+
+                        background: Rectangle {
+                            radius: 10
+                            color: "#D32F2F"
                         }
 
-                        Text {
-                            text: "Image: nginx:latest"
-                            color: "#AAAAAA"
-                            font.pixelSize: 18
+                        contentItem: Text {
+                            text: parent.text
+                            color: "white"
+                            font.bold: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
                         }
 
-                        Row {
-                            spacing: 12
+                        onClicked: {
+                            statusText.text = "Status: Stopped"
+                            messageBox.text = "Docker container stopped"
+                            messageBox.open()
+                        }
+                    }
 
-                            Button {
-                                text: "Start"
+                    Button {
+                        text: "Logs"
+                        width: 120
+                        height: 42
 
-                                onClicked: {
-                                    statusText.text = "Status: Running"
-                                    messageBox.text = "Docker container started"
-                                    messageBox.open()
-                                }
-                            }
+                        background: Rectangle {
+                            radius: 10
+                            color: "#1976D2"
+                        }
 
-                            Button {
-                                text: "Stop"
+                        contentItem: Text {
+                            text: parent.text
+                            color: "white"
+                            font.bold: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
 
-                                onClicked: {
-                                    statusText.text = "Status: Stopped"
-                                    messageBox.text = "Docker container stopped"
-                                    messageBox.open()
-                                }
-                            }
-
-                            Button {
-                                text: "Logs"
-
-                                onClicked: {
-                                    messageBox.text = "Opening container logs"
-                                    messageBox.open()
-                                }
-                            }
+                        onClicked: {
+                            messageBox.text = "Opening container logs"
+                            messageBox.open()
                         }
                     }
                 }
             }
         }
 
+        // QUICK STATS SECTION
+        Row {
+            spacing: 20
+
+            Rectangle {
+                width: 190
+                height: 130
+                radius: 18
+                color: "#1A1A1A"
+
+                Column {
+                    anchors.centerIn: parent
+                    spacing: 10
+
+                    Text {
+                        text: "CPU"
+                        color: "#AAAAAA"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "34%"
+                        color: "#00C853"
+                        font.pixelSize: 38
+                        font.bold: true
+                    }
+                }
+            }
+
+            Rectangle {
+                width: 190
+                height: 130
+                radius: 18
+                color: "#1A1A1A"
+
+                Column {
+                    anchors.centerIn: parent
+                    spacing: 10
+
+                    Text {
+                        text: "RAM"
+                        color: "#AAAAAA"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "61%"
+                        color: "#00BCD4"
+                        font.pixelSize: 38
+                        font.bold: true
+                    }
+                }
+            }
+
+            Rectangle {
+                width: 190
+                height: 130
+                radius: 18
+                color: "#1A1A1A"
+
+                Column {
+                    anchors.centerIn: parent
+                    spacing: 10
+
+                    Text {
+                        text: "NETWORK"
+                        color: "#AAAAAA"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "ACTIVE"
+                        color: "#FFC107"
+                        font.pixelSize: 26
+                        font.bold: true
+                    }
+                }
+            }
+
+            Rectangle {
+                width: 190
+                height: 130
+                radius: 18
+                color: "#1A1A1A"
+
+                Column {
+                    anchors.centerIn: parent
+                    spacing: 10
+
+                    Text {
+                        text: "UPTIME"
+                        color: "#AAAAAA"
+                        font.pixelSize: 20
+                    }
+
+                    Text {
+                        text: "24h"
+                        color: "#FF7043"
+                        font.pixelSize: 38
+                        font.bold: true
+                    }
+                }
+            }
+        }
+    }
+}
         // MONITOR PAGE
 // MONITOR PAGE
 Rectangle {
