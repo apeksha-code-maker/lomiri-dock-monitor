@@ -184,16 +184,44 @@ ApplicationWindow {
                     }
                 }
 
-                Rectangle {
-                    color: "#121212"
+               Rectangle {
+    color: "#121212"
 
-                    Text {
-                        anchors.centerIn: parent
-                        text: "Monitor Page"
-                        color: "white"
-                        font.pixelSize: 30
-                    }
+    Column {
+        anchors.centerIn: parent
+        spacing: 20
+
+        Text {
+            text: "System Monitor"
+            color: "white"
+            font.pixelSize: 32
+        }
+
+        Rectangle {
+            width: 400
+            height: 100
+            radius: 12
+            color: "#1E1E1E"
+
+            Column {
+                anchors.centerIn: parent
+                spacing: 10
+
+                Text {
+                    text: "CPU Usage: 34%"
+                    color: "#4CAF50"
+                    font.pixelSize: 24
                 }
+
+                Text {
+                    text: "RAM Usage: 61%"
+                    color: "#4CAF50"
+                    font.pixelSize: 24
+                }
+            }
+        }
+    }
+}
 
                 Rectangle {
                     color: "#121212"
