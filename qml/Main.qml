@@ -1,147 +1,183 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Dialogs 
 
 ApplicationWindow {
-visible: true
-width: 1200
-height: 700
-title: "LomiriDock Monitor"
-color: "#121212"
+    visible: true
+    width: 1200
+    height: 700
+    title: "LomiriDock Monitor"
+    color: "#121212"
 
-property int currentPage: 0
+    property int currentPage: 0
 
-MessageDialog {
-    id: messageBox
-    title: "Docker Action"
-    text: "Action Executed"
-}
-
-RowLayout {
-    anchors.fill: parent
-    spacing: 0
-
-    Rectangle {
-        width: 220
-        color: "#141414"
-        Layout.fillHeight: true
-
-        Column {
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.margins: 20
-            spacing: 20
-
-           Text {
-    text: "LOMIRI DOCK"
-    color: "white"
-    font.pixelSize: 24
-    font.bold: true
-    font.letterSpacing: 2
-}
-            Button {
-    text: "Dashboard"
-    width: 180
-    height: 50
-
-    background: Rectangle {
-        radius: 14
-        color: currentPage === 0 ? "#00C853" : "#2A2A2A"
-        border.width: 1
-        border.color: currentPage === 0 ? "#00FF99" : "#3A3A3A"
+    MessageDialog {
+        id: messageBox
+        title: "Docker Action"
+        text: "Action Executed"
     }
 
-    contentItem: Text {
-        text: parent.text
-        color: "white"
-        font.pixelSize: 18
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
+    RowLayout {
+        anchors.fill: parent
+        spacing: 0
 
-    onClicked: currentPage = 0
-}
+        // SIDEBAR
+        Rectangle {
+            width: 220
+            color: "#141414"
+            Layout.fillHeight: true
 
-Button {
-    text: "Monitor"
-    width: 180
-    height: 50
+            Column {
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.margins: 20
+                spacing: 20
 
-    background: Rectangle {
-        radius: 14
-        color: currentPage === 1 ? "#00C853" : "#2A2A2A"
-        border.width: 1
-        border.color: currentPage === 1 ? "#00FF99" : "#3A3A3A"
-    }
+                Text {
+                    text: "LOMIRI DOCK"
+                    color: "white"
+                    font.pixelSize: 24
+                    font.bold: true
+                    font.letterSpacing: 2
+                }
 
-    contentItem: Text {
-        text: parent.text
-        color: "white"
-        font.pixelSize: 18
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
+                // DASHBOARD BUTTON
+                Button {
+                    text: "Dashboard"
+                    width: 180
+                    height: 50
 
-    onClicked: currentPage = 1
-}
+                    background: Rectangle {
+                        radius: 14
+                        color: currentPage === 0 ? "#00C853" : "#2A2A2A"
 
-Button {
-    text: "Logs"
-    width: 180
-    height: 50
+                        border.width: 1
+                        border.color: currentPage === 0 ? "#00FF99" : "#3A3A3A"
 
-    background: Rectangle {
-        radius: 14
-        color: currentPage === 2 ? "#00C853" : "#2A2A2A"
-        border.width: 1
-        border.color: currentPage === 2 ? "#00FF99" : "#3A3A3A"
-    }
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: 200
+                            }
+                        }
+                    }
 
-    contentItem: Text {
-        text: parent.text
-        color: "white"
-        font.pixelSize: 18
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 18
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
 
-    onClicked: currentPage = 2
-}
+                    onClicked: currentPage = 0
+                }
 
-Button {
-    text: "Commands"
-    width: 180
-    height: 50
+                // MONITOR BUTTON
+                Button {
+                    text: "Monitor"
+                    width: 180
+                    height: 50
 
-    background: Rectangle {
-        radius: 14
-        color: currentPage === 3 ? "#00C853" : "#2A2A2A"
-        border.width: 1
-        border.color: currentPage === 3 ? "#00FF99" : "#3A3A3A"
-    }
+                    background: Rectangle {
+                        radius: 14
+                        color: currentPage === 1 ? "#00C853" : "#2A2A2A"
 
-    contentItem: Text {
-        text: parent.text
-        color: "white"
-        font.pixelSize: 18
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
+                        border.width: 1
+                        border.color: currentPage === 1 ? "#00FF99" : "#3A3A3A"
 
-    onClicked: currentPage = 3
-}
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: 200
+                            }
+                        }
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 18
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    onClicked: currentPage = 1
+                }
+
+                // LOGS BUTTON
+                Button {
+                    text: "Logs"
+                    width: 180
+                    height: 50
+
+                    background: Rectangle {
+                        radius: 14
+                        color: currentPage === 2 ? "#00C853" : "#2A2A2A"
+
+                        border.width: 1
+                        border.color: currentPage === 2 ? "#00FF99" : "#3A3A3A"
+
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: 200
+                            }
+                        }
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 18
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    onClicked: currentPage = 2
+                }
+
+                // COMMANDS BUTTON
+                Button {
+                    text: "Commands"
+                    width: 180
+                    height: 50
+
+                    background: Rectangle {
+                        radius: 14
+                        color: currentPage === 3 ? "#00C853" : "#2A2A2A"
+
+                        border.width: 1
+                        border.color: currentPage === 3 ? "#00FF99" : "#3A3A3A"
+
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: 200
+                            }
+                        }
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 18
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    onClicked: currentPage = 3
+                }
+            }
         }
-    }
 
-    StackLayout {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        currentIndex: currentPage
+        // MAIN PAGE STACK
+        StackLayout {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            currentIndex: currentPage
+
+
 
 // DASHBOARD PAGE
 // DASHBOARD PAGE
@@ -149,8 +185,8 @@ Rectangle {
     color: "#121212"
 
     Column {
-        anchors.margins: 20
         anchors.fill: parent
+        anchors.margins: 20
         spacing: 20
 
         Text {
@@ -167,6 +203,8 @@ Rectangle {
             height: 120
             radius: 16
             color: "#1E1E1E"
+            border.color: "#2C2C2C"
+            border.width: 1
 
             Column {
                 anchors.centerIn: parent
@@ -183,6 +221,7 @@ Rectangle {
                     text: "Running Containers: 4"
                     color: "#4CAF50"
                     font.pixelSize: 22
+                    font.bold: true
                 }
             }
         }
@@ -190,22 +229,25 @@ Rectangle {
         // MAIN CONTAINER CARD
         Rectangle {
             width: 850
-            height: 220
-            radius: 16
+            height: 240
+            radius: 18
             color: "#1E1E1E"
+            border.color: "#2C2C2C"
+            border.width: 1
 
             Column {
                 anchors.fill: parent
                 anchors.margins: 20
                 spacing: 14
 
+                // HEADER
                 Row {
-                    spacing: 10
+                    spacing: 12
 
                     Rectangle {
-                        width: 12
-                        height: 12
-                        radius: 6
+                        width: 14
+                        height: 14
+                        radius: 7
                         color: "#00C853"
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -218,11 +260,13 @@ Rectangle {
                     }
                 }
 
+                // STATUS
                 Text {
                     id: statusText
                     text: "Status: Running"
                     color: "#4CAF50"
                     font.pixelSize: 20
+                    font.bold: true
                 }
 
                 Text {
@@ -237,9 +281,17 @@ Rectangle {
                     font.pixelSize: 18
                 }
 
+                Text {
+                    text: "CPU Usage: 34%"
+                    color: "#AAAAAA"
+                    font.pixelSize: 18
+                }
+
+                // ACTION BUTTONS
                 Row {
                     spacing: 14
 
+                    // START BUTTON
                     Button {
                         text: "Start"
                         width: 120
@@ -248,6 +300,12 @@ Rectangle {
                         background: Rectangle {
                             radius: 10
                             color: "#00C853"
+
+                            Behavior on color {
+                                ColorAnimation {
+                                    duration: 200
+                                }
+                            }
                         }
 
                         contentItem: Text {
@@ -265,6 +323,7 @@ Rectangle {
                         }
                     }
 
+                    // STOP BUTTON
                     Button {
                         text: "Stop"
                         width: 120
@@ -273,6 +332,12 @@ Rectangle {
                         background: Rectangle {
                             radius: 10
                             color: "#D32F2F"
+
+                            Behavior on color {
+                                ColorAnimation {
+                                    duration: 200
+                                }
+                            }
                         }
 
                         contentItem: Text {
@@ -290,6 +355,7 @@ Rectangle {
                         }
                     }
 
+                    // LOGS BUTTON
                     Button {
                         text: "Logs"
                         width: 120
@@ -298,6 +364,12 @@ Rectangle {
                         background: Rectangle {
                             radius: 10
                             color: "#1976D2"
+
+                            Behavior on color {
+                                ColorAnimation {
+                                    duration: 200
+                                }
+                            }
                         }
 
                         contentItem: Text {
@@ -321,11 +393,14 @@ Rectangle {
         Row {
             spacing: 20
 
+            // CPU CARD
             Rectangle {
                 width: 190
                 height: 130
                 radius: 18
                 color: "#1A1A1A"
+                border.color: "#2C2C2C"
+                border.width: 1
 
                 Column {
                     anchors.centerIn: parent
@@ -346,11 +421,14 @@ Rectangle {
                 }
             }
 
+            // RAM CARD
             Rectangle {
                 width: 190
                 height: 130
                 radius: 18
                 color: "#1A1A1A"
+                border.color: "#2C2C2C"
+                border.width: 1
 
                 Column {
                     anchors.centerIn: parent
@@ -371,11 +449,14 @@ Rectangle {
                 }
             }
 
+            // NETWORK CARD
             Rectangle {
                 width: 190
                 height: 130
                 radius: 18
                 color: "#1A1A1A"
+                border.color: "#2C2C2C"
+                border.width: 1
 
                 Column {
                     anchors.centerIn: parent
@@ -396,11 +477,14 @@ Rectangle {
                 }
             }
 
+            // UPTIME CARD
             Rectangle {
                 width: 190
                 height: 130
                 radius: 18
                 color: "#1A1A1A"
+                border.color: "#2C2C2C"
+                border.width: 1
 
                 Column {
                     anchors.centerIn: parent
@@ -426,422 +510,469 @@ Rectangle {
         // MONITOR PAGE
 // MONITOR PAGE
 Rectangle {
-color: "#0B0B0B"
+    color: "#0B0B0B"
 
-Flickable {
-    anchors.fill: parent
-    contentWidth: parent.width
-    contentHeight: 900
-    clip: true
-
-    Column {
-        width: parent.width
-        spacing: 28
-        anchors.top: parent.top
-        anchors.topMargin: 30
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        Text {
-            text: "System Monitor"
-            color: "white"
-            font.pixelSize: 42
-            font.bold: true
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
-        // CPU CARD
-        Rectangle {
-            width: 620
-            height: 180
-            radius: 22
-            color: "#171717"
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 24
-                spacing: 22
-
-                Text {
-                    text: "CPU Usage"
-                    color: "white"
-                    font.pixelSize: 30
-                    font.bold: true
-                }
-
-                ProgressBar {
-                    value: 0.34
-                    width: 560
-                    height: 24
-                }
-
-                Row {
-                    spacing: 20
-
-                    Text {
-                        text: "Usage: 34%"
-                        color: "#4CAF50"
-                        font.pixelSize: 22
-                    }
-
-                    Text {
-                        text: "Cores: 8"
-                        color: "#AAAAAA"
-                        font.pixelSize: 22
-                    }
-                }
-            }
-        }
-
-        // RAM CARD
-        Rectangle {
-            width: 620
-            height: 180
-            radius: 22
-            color: "#171717"
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 24
-                spacing: 22
-
-                Text {
-                    text: "RAM Usage"
-                    color: "white"
-                    font.pixelSize: 30
-                    font.bold: true
-                }
-
-                ProgressBar {
-                    value: 0.61
-                    width: 560
-                    height: 24
-                }
-
-                Row {
-                    spacing: 20
-
-                    Text {
-                        text: "Used: 6.1 GB"
-                        color: "#4CAF50"
-                        font.pixelSize: 22
-                    }
-
-                    Text {
-                        text: "Total: 10 GB"
-                        color: "#AAAAAA"
-                        font.pixelSize: 22
-                    }
-                }
-            }
-        }
-
-        // NETWORK CARD
-        Rectangle {
-            width: 620
-            height: 180
-            radius: 22
-            color: "#171717"
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 24
-                spacing: 18
-
-                Text {
-                    text: "Network Activity"
-                    color: "white"
-                    font.pixelSize: 30
-                    font.bold: true
-                }
-
-                Row {
-                    spacing: 60
-
-                    Column {
-                        spacing: 10
-
-                        Text {
-                            text: "Download"
-                            color: "#AAAAAA"
-                            font.pixelSize: 20
-                        }
-
-                        Text {
-                            text: "120 Mbps"
-                            color: "#00BCD4"
-                            font.pixelSize: 28
-                            font.bold: true
-                        }
-                    }
-
-                    Column {
-                        spacing: 10
-
-                        Text {
-                            text: "Upload"
-                            color: "#AAAAAA"
-                            font.pixelSize: 20
-                        }
-
-                        Text {
-                            text: "42 Mbps"
-                            color: "#4CAF50"
-                            font.pixelSize: 28
-                            font.bold: true
-                        }
-                    }
-                }
-            }
-        }
-
-        // DOCKER STATS
-        Row {
-            spacing: 22
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            Rectangle {
-                width: 180
-                height: 140
-                radius: 18
-                color: "#171717"
-
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 10
-
-                    Text {
-                        text: "Containers"
-                        color: "#AAAAAA"
-                        font.pixelSize: 20
-                    }
-
-                    Text {
-                        text: "4"
-                        color: "#4CAF50"
-                        font.pixelSize: 42
-                        font.bold: true
-                    }
-                }
-            }
-
-            Rectangle {
-                width: 180
-                height: 140
-                radius: 18
-                color: "#171717"
-
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 10
-
-                    Text {
-                        text: "Images"
-                        color: "#AAAAAA"
-                        font.pixelSize: 20
-                    }
-
-                    Text {
-                        text: "12"
-                        color: "#00BCD4"
-                        font.pixelSize: 42
-                        font.bold: true
-                    }
-                }
-            }
-
-            Rectangle {
-                width: 180
-                height: 140
-                radius: 18
-                color: "#171717"
-
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 10
-
-                    Text {
-                        text: "Networks"
-                        color: "#AAAAAA"
-                        font.pixelSize: 20
-                    }
-
-                    Text {
-                        text: "3"
-                        color: "#FFC107"
-                        font.pixelSize: 42
-                        font.bold: true
-                    }
-                }
-            }
-        }
-    }
-}
-}
-// LOGS PAGE
-Rectangle {
-color: "#0B0B0B"
-
-Column {
-    anchors.fill: parent
-    anchors.margins: 25
-    spacing: 22
-
-    Text {
-        text: "Docker Logs Console"
-        color: "white"
-        font.pixelSize: 38
-        font.bold: true
-    }
-
-    Rectangle {
-        width: parent.width - 50
-        height: 560
-        radius: 18
-        color: "#050505"
-        border.color: "#00C853"
-        border.width: 2
+    Flickable {
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: 950
+        clip: true
 
         Column {
-            anchors.fill: parent
-            anchors.margins: 18
-            spacing: 16
+            width: parent.width
+            spacing: 28
 
-            // Terminal Header
-            Row {
-                spacing: 10
+            anchors.top: parent.top
+            anchors.topMargin: 30
+            anchors.horizontalCenter: parent.horizontalCenter
 
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#FF5F56"
-                }
-
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#FFBD2E"
-                }
-
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#27C93F"
-                }
-
-                Text {
-                    text: "docker-logs-terminal"
-                    color: "#888888"
-                    font.pixelSize: 16
-                }
+            // PAGE TITLE
+            Text {
+                text: "System Monitor"
+                color: "white"
+                font.pixelSize: 42
+                font.bold: true
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
+            // CPU CARD
             Rectangle {
-                width: parent.width
-                height: 1
-                color: "#1E1E1E"
+                width: 620
+                height: 190
+                radius: 22
+                color: "#171717"
+                border.color: "#2B2B2B"
+                border.width: 1
+
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Column {
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 22
+
+                    Text {
+                        text: "CPU Usage"
+                        color: "white"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
+
+                    ProgressBar {
+                        value: 0.34
+                        width: 560
+                        height: 24
+                    }
+
+                    Row {
+                        spacing: 20
+
+                        Text {
+                            text: "Usage: 34%"
+                            color: "#4CAF50"
+                            font.pixelSize: 22
+                            font.bold: true
+                        }
+
+                        Text {
+                            text: "Cores: 8"
+                            color: "#AAAAAA"
+                            font.pixelSize: 22
+                        }
+                    }
+
+                    Text {
+                        text: "Temperature: 54°C"
+                        color: "#AAAAAA"
+                        font.pixelSize: 18
+                    }
+                }
             }
 
-          
-Flickable {
-    anchors.fill: parent
-    clip: true
+            // RAM CARD
+            Rectangle {
+                width: 620
+                height: 190
+                radius: 22
+                color: "#171717"
+                border.color: "#2B2B2B"
+                border.width: 1
 
-    contentWidth: width
-    contentHeight: logsColumn.height + 40
+                anchors.horizontalCenter: parent.horizontalCenter
 
-    Column {
-        id: logsColumn
-        width: parent.width - 40
-        spacing: 18
+                Column {
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 22
 
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: parent.top
-        anchors.topMargin: 20
+                    Text {
+                        text: "RAM Usage"
+                        color: "white"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
 
-        Text {
-            text: "[07:45:10] [INFO] Docker daemon initialized"
-            color: "#00C853"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                    ProgressBar {
+                        value: 0.61
+                        width: 560
+                        height: 24
+                    }
 
-        Text {
-            text: "[07:45:18] [INFO] nginx-container started"
-            color: "white"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                    Row {
+                        spacing: 20
 
-        Text {
-            text: "[07:45:32] [WARNING] CPU usage spike detected"
-            color: "#FFD600"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                        Text {
+                            text: "Used: 6.1 GB"
+                            color: "#00BCD4"
+                            font.pixelSize: 22
+                            font.bold: true
+                        }
 
-        Text {
-            text: "[07:45:40] [INFO] Monitoring service active"
-            color: "#00C853"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                        Text {
+                            text: "Total: 10 GB"
+                            color: "#AAAAAA"
+                            font.pixelSize: 22
+                        }
+                    }
 
-        Text {
-            text: "[07:45:55] [ERROR] Failed image pull request"
-            color: "#FF3D00"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                    Text {
+                        text: "Available: 3.9 GB"
+                        color: "#AAAAAA"
+                        font.pixelSize: 18
+                    }
+                }
+            }
 
-        Text {
-            text: "[07:46:02] [INFO] Docker network connected"
-            color: "white"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+            // NETWORK CARD
+            Rectangle {
+                width: 620
+                height: 190
+                radius: 22
+                color: "#171717"
+                border.color: "#2B2B2B"
+                border.width: 1
 
-        Text {
-            text: "[07:46:15] [INFO] Volume mounted successfully"
-            color: "#00C853"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                anchors.horizontalCenter: parent.horizontalCenter
 
-        Text {
-            text: "[07:46:27] [WARNING] RAM usage increased"
-            color: "#FFD600"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                Column {
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 18
 
-        Text {
-            text: "[07:46:41] [INFO] Container restart completed"
-            color: "#00C853"
-            font.family: "monospace"
-            font.pixelSize: 20
-        }
+                    Text {
+                        text: "Network Activity"
+                        color: "white"
+                        font.pixelSize: 30
+                        font.bold: true
+                    }
 
-        Text {
-            text: "[07:46:58] [INFO] Docker stats updated"
-            color: "white"
-            font.family: "monospace"
-            font.pixelSize: 20
+                    Row {
+                        spacing: 60
+
+                        Column {
+                            spacing: 10
+
+                            Text {
+                                text: "Download"
+                                color: "#AAAAAA"
+                                font.pixelSize: 20
+                            }
+
+                            Text {
+                                text: "120 Mbps"
+                                color: "#00BCD4"
+                                font.pixelSize: 28
+                                font.bold: true
+                            }
+                        }
+
+                        Column {
+                            spacing: 10
+
+                            Text {
+                                text: "Upload"
+                                color: "#AAAAAA"
+                                font.pixelSize: 20
+                            }
+
+                            Text {
+                                text: "42 Mbps"
+                                color: "#4CAF50"
+                                font.pixelSize: 28
+                                font.bold: true
+                            }
+                        }
+                    }
+
+                    Text {
+                        text: "Latency: 12 ms"
+                        color: "#AAAAAA"
+                        font.pixelSize: 18
+                    }
+                }
+            }
+
+            // DOCKER STATS SECTION
+            Row {
+                spacing: 22
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                // CONTAINERS CARD
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+                    border.color: "#2B2B2B"
+                    border.width: 1
+
+                    Column {
+                        anchors.centerIn: parent
+                        spacing: 10
+
+                        Text {
+                            text: "Containers"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "4"
+                            color: "#4CAF50"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+
+                // IMAGES CARD
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+                    border.color: "#2B2B2B"
+                    border.width: 1
+
+                    Column {
+                        anchors.centerIn: parent
+                        spacing: 10
+
+                        Text {
+                            text: "Images"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "12"
+                            color: "#00BCD4"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+
+                // NETWORKS CARD
+                Rectangle {
+                    width: 180
+                    height: 140
+                    radius: 18
+                    color: "#171717"
+                    border.color: "#2B2B2B"
+                    border.width: 1
+
+                    Column {
+                        anchors.centerIn: parent
+                        spacing: 10
+
+                        Text {
+                            text: "Networks"
+                            color: "#AAAAAA"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "3"
+                            color: "#FFC107"
+                            font.pixelSize: 42
+                            font.bold: true
+                        }
+                    }
+                }
+            }
         }
     }
 }
+// LOGS PAGE
+// LOGS PAGE
+Rectangle {
+    color: "#0B0B0B"
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 25
+        spacing: 22
+
+        // PAGE TITLE
+        Text {
+            text: "Docker Logs Console"
+            color: "white"
+            font.pixelSize: 38
+            font.bold: true
+        }
+
+        // TERMINAL CONTAINER
+        Rectangle {
+            width: parent.width - 50
+            height: 560
+            radius: 18
+            color: "#050505"
+            border.color: "#00C853"
+            border.width: 2
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 18
+                spacing: 16
+
+                // TERMINAL HEADER
+                Row {
+                    spacing: 10
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
+
+                    Text {
+                        text: "docker-logs-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+
+                // SEPARATOR LINE
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1E1E1E"
+                }
+
+                // LOG OUTPUT AREA
+                Flickable {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.topMargin: 10
+                    anchors.bottom: parent.bottom
+
+                    clip: true
+
+                    contentWidth: width
+                    contentHeight: logsColumn.height + 40
+
+                    Column {
+                        id: logsColumn
+
+                        width: parent.width - 40
+                        spacing: 18
+
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
+
+                        Text {
+                            text: "[07:45:10] [INFO] Docker daemon initialized"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:45:18] [INFO] nginx-container started"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:45:32] [WARNING] CPU usage spike detected"
+                            color: "#FFD600"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:45:40] [INFO] Monitoring service active"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:45:55] [ERROR] Failed image pull request"
+                            color: "#FF3D00"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:02] [INFO] Docker network connected"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:15] [INFO] Volume mounted successfully"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:27] [WARNING] RAM usage increased"
+                            color: "#FFD600"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:41] [INFO] Container restart completed"
+                            color: "#00C853"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+
+                        Text {
+                            text: "[07:46:58] [INFO] Docker stats updated"
+                            color: "white"
+                            font.family: "monospace"
+                            font.pixelSize: 20
+                        }
+                    }
                 }
             }
         }
     }
-    }
-        // COMMANDS PAGE
+}
+
 // COMMANDS PAGE
 Rectangle {
     color: "#0B0B0B"
@@ -851,6 +982,7 @@ Rectangle {
         anchors.margins: 25
         spacing: 22
 
+        // PAGE TITLE
         Text {
             text: "Linux Command Console"
             color: "white"
@@ -858,6 +990,7 @@ Rectangle {
             font.bold: true
         }
 
+        // COMMAND INPUT BAR
         Rectangle {
             width: parent.width - 50
             height: 60
@@ -881,6 +1014,7 @@ Rectangle {
 
                 TextField {
                     id: commandInput
+
                     width: 520
                     height: 36
 
@@ -926,85 +1060,7 @@ Rectangle {
             }
         }
 
-        Rectangle {
-            width: parent.width - 50
-            height: 500
-            radius: 18
-            color: "#050505"
-            border.color: "#222222"
-            border.width: 2
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 18
-                spacing: 16
-
-                Row {
-                    spacing: 10
-
-                    Rectangle {
-                        width: 14
-                        height: 14
-                        radius: 7
-                        color: "#FF5F56"
-                    }
-
-                    Rectangle {
-                        width: 14
-                        height: 14
-                        radius: 7
-                        color: "#FFBD2E"
-                    }
-
-                    Rectangle {
-                        width: 14
-                        height: 14
-                        radius: 7
-                        color: "#27C93F"
-                    }
-
-                    Text {
-                        text: "linux-terminal"
-                        color: "#888888"
-                        font.pixelSize: 16
-                    }
-                }
-
-                Rectangle {
-                    width: parent.width
-                    height: 1
-                    color: "#1F1F1F"
-                }
-
-                ScrollView {
-                    width: parent.width
-                    height: 400
-
-                    TextArea {
-                        id: terminalOutput
-
-                        readOnly: true
-                        text: "Linux terminal ready...\n"
-
-                        color: "#00FF99"
-                        font.family: "monospace"
-                        font.pixelSize: 16
-                        wrapMode: Text.Wrap
-
-                        background: Rectangle {
-                            color: "#050505"
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-}
-}
-
-               // TERMINAL OUTPUT
+        // TERMINAL OUTPUT
         Rectangle {
             width: parent.width - 50
             height: 500
@@ -1047,6 +1103,7 @@ Rectangle {
                         text: "linux-terminal"
                         color: "#888888"
                         font.pixelSize: 16
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                 }
 
@@ -1069,6 +1126,86 @@ Rectangle {
                         color: "#00FF99"
                         font.family: "monospace"
                         font.pixelSize: 16
+                        wrapMode: Text.Wrap
+
+                        background: Rectangle {
+                            color: "#050505"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+        // TERMINAL OUTPUT
+        Rectangle {
+            width: parent.width - 50
+            height: 500
+            radius: 18
+            color: "#050505"
+            border.color: "#222222"
+            border.width: 2
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 18
+                spacing: 16
+
+                // TERMINAL HEADER
+                Row {
+                    spacing: 10
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
+
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
+
+                    Text {
+                        text: "linux-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+
+                // SEPARATOR LINE
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1F1F1F"
+                }
+
+                // TERMINAL SCROLL AREA
+                ScrollView {
+                    width: parent.width
+                    height: 400
+                    clip: true
+
+                    TextArea {
+                        id: terminalOutput
+
+                        readOnly: true
+                        text: "Linux terminal ready...\n"
+
+                        color: "#00FF99"
+                        font.family: "monospace"
+                        font.pixelSize: 16
 
                         wrapMode: Text.Wrap
 
@@ -1081,5 +1218,6 @@ Rectangle {
         }
     }
 }
+}
 
-
+            
