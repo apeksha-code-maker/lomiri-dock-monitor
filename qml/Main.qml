@@ -24,7 +24,7 @@ RowLayout {
 
     Rectangle {
         width: 220
-        color: "#1E1E1E"
+        color: "#141414"
         Layout.fillHeight: true
 
         Column {
@@ -33,36 +33,108 @@ RowLayout {
             anchors.margins: 20
             spacing: 20
 
-            Text {
-                text: "MENU"
-                color: "white"
-                font.pixelSize: 24
-                font.bold: true
-            }
-
+           Text {
+    text: "LOMIRI DOCK"
+    color: "white"
+    font.pixelSize: 24
+    font.bold: true
+    font.letterSpacing: 2
+}
             Button {
-                text: "Dashboard"
-                width: 160
-                onClicked: currentPage = 0
-            }
+    text: "Dashboard"
+    width: 180
+    height: 50
 
-            Button {
-                text: "Monitor"
-                width: 160
-                onClicked: currentPage = 1
-            }
+    background: Rectangle {
+        radius: 14
+        color: currentPage === 0 ? "#00C853" : "#2A2A2A"
+        border.width: 1
+        border.color: currentPage === 0 ? "#00FF99" : "#3A3A3A"
+    }
 
-            Button {
-                text: "Logs"
-                width: 160
-                onClicked: currentPage = 2
-            }
+    contentItem: Text {
+        text: parent.text
+        color: "white"
+        font.pixelSize: 18
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
 
-            Button {
-                text: "Commands"
-                width: 160
-                onClicked: currentPage = 3
-            }
+    onClicked: currentPage = 0
+}
+
+Button {
+    text: "Monitor"
+    width: 180
+    height: 50
+
+    background: Rectangle {
+        radius: 14
+        color: currentPage === 1 ? "#00C853" : "#2A2A2A"
+        border.width: 1
+        border.color: currentPage === 1 ? "#00FF99" : "#3A3A3A"
+    }
+
+    contentItem: Text {
+        text: parent.text
+        color: "white"
+        font.pixelSize: 18
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    onClicked: currentPage = 1
+}
+
+Button {
+    text: "Logs"
+    width: 180
+    height: 50
+
+    background: Rectangle {
+        radius: 14
+        color: currentPage === 2 ? "#00C853" : "#2A2A2A"
+        border.width: 1
+        border.color: currentPage === 2 ? "#00FF99" : "#3A3A3A"
+    }
+
+    contentItem: Text {
+        text: parent.text
+        color: "white"
+        font.pixelSize: 18
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    onClicked: currentPage = 2
+}
+
+Button {
+    text: "Commands"
+    width: 180
+    height: 50
+
+    background: Rectangle {
+        radius: 14
+        color: currentPage === 3 ? "#00C853" : "#2A2A2A"
+        border.width: 1
+        border.color: currentPage === 3 ? "#00FF99" : "#3A3A3A"
+    }
+
+    contentItem: Text {
+        text: parent.text
+        color: "white"
+        font.pixelSize: 18
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    onClicked: currentPage = 3
+}
         }
     }
 
