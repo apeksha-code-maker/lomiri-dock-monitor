@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lomiri Dock
+Exec=python3 main.py
+Icon=icon.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
