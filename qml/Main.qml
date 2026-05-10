@@ -389,6 +389,10 @@ Button {
         terminalOutput.text += result + "\n"
     }
 }
+                    }
+                }
+            }
+        }
         // QUICK STATS SECTION
         Row {
             spacing: 20
