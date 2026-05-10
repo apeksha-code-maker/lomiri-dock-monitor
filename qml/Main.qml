@@ -355,39 +355,40 @@ onClicked: {
 }
                     }
 
-                    // LOGS BUTTON
-                    Button {
-                        text: "Logs"
-                        width: 120
-                        height: 42
+                    
+// LOGS BUTTON
+Button {
+    text: "Logs"
+    width: 120
+    height: 42
 
-                        background: Rectangle {
-                            radius: 10
-                            color: "#1976D2"
+    background: Rectangle {
+        radius: 10
+        color: "#1976D2"
 
-                            Behavior on color {
-                                ColorAnimation {
-                                    duration: 200
-                                }
-                            }
-                        }
-
-                        contentItem: Text {
-                            text: parent.text
-                            color: "white"
-                            font.bold: true
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                        }
-
-                        onClicked: {
-                                console.log("Opening container logs")
-                          }
-                    }
-                }
+        Behavior on color {
+            ColorAnimation {
+                duration: 200
             }
         }
+    }
 
+    contentItem: Text {
+        text: parent.text
+        color: "white"
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    onClicked: {
+
+        var result = backend.getLogs()
+
+        terminalOutput.text += "\n$ docker logs nginx-container\n"
+        terminalOutput.text += result + "\n"
+    }
+}
         // QUICK STATS SECTION
         Row {
             spacing: 20
