@@ -842,222 +842,169 @@ Flickable {
     }
         // COMMANDS PAGE
 // COMMANDS PAGE
+// COMMANDS PAGE
 Rectangle {
-color: "#0B0B0B"
-
-Column {
-    anchors.fill: parent
-    anchors.margins: 25
-    spacing: 22
-
-    Text {
-        text: "Linux Command Console"
-        color: "white"
-        font.pixelSize: 38
-        font.bold: true
-    }
-
-    Rectangle {
-        width: parent.width - 50
-        height: 60
-        radius: 14
-        color: "#111111"
-        border.color: "#00FF99"
-        border.width: 1
-
-        Row {
-            anchors.fill: parent
-            anchors.margins: 12
-            spacing: 12
-
-            Text {
-                text: "user@lomiri:~$"
-                color: "#00FF99"
-                font.family: "monospace"
-                font.pixelSize: 22
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            TextField {
-                id: commandInput
-                width: 520
-                height: 36
-                placeholderText: "Enter Linux command..."
-                text: "sudo apt update"
-                font.pixelSize: 18
-                color: "white"
-
-                background: Rectangle {
-                    radius: 8
-                    color: "#1A1A1A"
-                    border.color: "#333333"
-                }
-            }
-
-            Button {
-                text: "Execute"
-                width: 120
-                height: 38
-
-                background: Rectangle {
-                    radius: 10
-                    color: "#00C853"
-                }
-
-                contentItem: Text {
-                    text: parent.text
-                    color: "white"
-                    font.pixelSize: 16
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        width: parent.width - 50
-        height: 500
-        radius: 18
-        color: "#050505"
-        border.color: "#222222"
-        border.width: 2
-
-        Column {
-            anchors.fill: parent
-            anchors.margins: 20
-            spacing: 18
-
-            Row {
-                spacing: 10
-
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#FF5F56"
-                }
-
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#FFBD2E"
-                }
-
-                Rectangle {
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#27C93F"
-                }
-
-                Text {
-                    text: "docker-terminal"
-                    color: "#888888"
-                    font.pixelSize: 16
-                }
-            }
-
-            Rectangle {
-                width: parent.width
-                height: 1
-                color: "#1F1F1F"
-            }
-
-          Flickable {
-    anchors.fill: parent
-    clip: true
-
-    contentWidth: width
-    contentHeight: terminalColumn.height + 40
+    color: "#0B0B0B"
 
     Column {
-        id: terminalColumn
-        width: parent.width - 40
-        spacing: 16
-
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: parent.top
-        anchors.topMargin: 20
+        anchors.fill: parent
+        anchors.margins: 25
+        spacing: 22
 
         Text {
-            text: "$ docker ps"
-            color: "#00FF99"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
-
-        Text {
-            text: "CONTAINER ID      IMAGE        STATUS"
+            text: "Linux Command Console"
             color: "white"
-            font.family: "monospace"
-            font.pixelSize: 18
+            font.pixelSize: 38
+            font.bold: true
         }
 
-        Text {
-            text: "7ad21f4d91       nginx        Running"
-            color: "#4CAF50"
-            font.family: "monospace"
-            font.pixelSize: 18
+        // COMMAND INPUT BAR
+        Rectangle {
+            width: parent.width - 50
+            height: 60
+            radius: 14
+            color: "#111111"
+            border.color: "#00FF99"
+            border.width: 1
+
+            Row {
+                anchors.fill: parent
+                anchors.margins: 12
+                spacing: 12
+
+                Text {
+                    text: "user@lomiri:~$"
+                    color: "#00FF99"
+                    font.family: "monospace"
+                    font.pixelSize: 22
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                TextField {
+                    id: commandInput
+
+                    width: 520
+                    height: 36
+
+                    placeholderText: "Enter Linux command..."
+                    text: "docker ps"
+
+                    font.pixelSize: 18
+                    color: "white"
+
+                    background: Rectangle {
+                        radius: 8
+                        color: "#1A1A1A"
+                        border.color: "#333333"
+                    }
+                }
+
+                Button {
+                    text: "Execute"
+                    width: 120
+                    height: 38
+
+                    background: Rectangle {
+                        radius: 10
+                        color: "#00C853"
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 16
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    onClicked: {
+
+                        var result = backend.runCommand(commandInput.text)
+
+                        terminalOutput.text += "\n$ " + commandInput.text + "\n"
+
+                        terminalOutput.text += result + "\n"
+                    }
+                }
+            }
         }
 
-        Text {
-            text: "$ docker images"
-            color: "#00FF99"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+        // TERMINAL OUTPUT
+        Rectangle {
+            width: parent.width - 50
+            height: 500
+            radius: 18
+            color: "#050505"
+            border.color: "#222222"
+            border.width: 2
 
-        Text {
-            text: "REPOSITORY        TAG         SIZE"
-            color: "white"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+            Column {
+                anchors.fill: parent
+                anchors.margins: 18
+                spacing: 16
 
-        Text {
-            text: "nginx             latest      187MB"
-            color: "#4CAF50"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+                // TERMINAL HEADER
+                Row {
+                    spacing: 10
 
-        Text {
-            text: "$ systemctl status docker"
-            color: "#00FF99"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FF5F56"
+                    }
 
-        Text {
-            text: "Docker service active (running)"
-            color: "#4CAF50"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#FFBD2E"
+                    }
 
-        Text {
-            text: "$ docker stats"
-            color: "#00FF99"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
+                    Rectangle {
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#27C93F"
+                    }
 
-        Text {
-            text: "CPU: 34%   RAM: 61%   NET: ACTIVE"
-            color: "#00BCD4"
-            font.family: "monospace"
-            font.pixelSize: 18
-        }
-    }
-}
-           }
-        }
-    }
-}
+                    Text {
+                        text: "linux-terminal"
+                        color: "#888888"
+                        font.pixelSize: 16
+                    }
+                }
+
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#1F1F1F"
+                }
+
+                ScrollView {
+                    width: parent.width
+                    height: 400
+
+                    TextArea {
+                        id: terminalOutput
+
+                        readOnly: true
+
+                        text: "Linux terminal ready...\n"
+
+                        color: "#00FF99"
+                        font.family: "monospace"
+                        font.pixelSize: 16
+
+                        wrapMode: Text.Wrap
+
+                        background: Rectangle {
+                            color: "#050505"
+                        }
+                    }
+                }
+            }
         }
     }
 }
