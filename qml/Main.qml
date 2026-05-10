@@ -121,18 +121,28 @@ ApplicationWindow {
 
                         Row {
                             spacing: 10
+Button {
+    text: "Start"
 
-                            Button {
-                                text: "Start"
-                            }
+    onClicked: {
+        console.log("Start button clicked")
+    }
+}
+Button {
+    text: "Stop"
 
-                            Button {
-                                text: "Stop"
-                            }
+    onClicked: {
+        console.log("Stop button clicked")
+    }
+}
 
-                            Button {
-                                text: "Logs"
-                            }
+                           Button {
+    text: "Logs"
+
+    onClicked: {
+        console.log("Logs button clicked")
+    }
+}
                         }
                     }
                 }
