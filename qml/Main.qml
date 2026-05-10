@@ -37,63 +37,54 @@ ApplicationWindow {
                     text: "MENU"
                     color: "white"
                     font.pixelSize: 24
+                    font.bold: true
                 }
 
                 Button {
                     text: "Dashboard"
                     width: 160
-
-                    onClicked: {
-                        currentPage = 0
-                    }
+                    onClicked: currentPage = 0
                 }
 
                 Button {
                     text: "Monitor"
                     width: 160
-
-                    onClicked: {
-                        currentPage = 1
-                    }
+                    onClicked: currentPage = 1
                 }
 
                 Button {
                     text: "Logs"
                     width: 160
-
-                    onClicked: {
-                        currentPage = 2
-                    }
+                    onClicked: currentPage = 2
                 }
 
                 Button {
                     text: "Commands"
                     width: 160
-
-                    onClicked: {
-                        currentPage = 3
-                    }
+                    onClicked: currentPage = 3
                 }
             }
         }
 
-        Rectangle {
+        StackLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            color: "#121212"
+            currentIndex: currentPage
 
-            StackLayout {
-                anchors.fill: parent
-                currentIndex: currentPage
+            // DASHBOARD PAGE
+            Rectangle {
+                color: "#121212"
 
                 Column {
                     anchors.margins: 20
+                    anchors.fill: parent
                     spacing: 20
 
                     Text {
                         text: "LomiriDock Monitor"
                         color: "white"
                         font.pixelSize: 32
+                        font.bold: true
                     }
 
                     Rectangle {
@@ -113,7 +104,7 @@ ApplicationWindow {
                             }
 
                             Text {
-                                text: "Running Containers: 0"
+                                text: "Running Containers: 4"
                                 color: "#4CAF50"
                                 font.pixelSize: 20
                             }
@@ -122,34 +113,36 @@ ApplicationWindow {
 
                     Rectangle {
                         width: 850
-                        height: 180
+                        height: 200
                         radius: 12
                         color: "#1E1E1E"
 
                         Column {
                             anchors.fill: parent
                             anchors.margins: 20
-                            spacing: 10
+                            spacing: 12
 
                             Text {
                                 text: "nginx-container"
                                 color: "white"
-                                font.pixelSize: 22
+                                font.pixelSize: 24
                             }
 
                             Text {
                                 id: statusText
-                                text: "Status: Stopped"
+                                text: "Status: Running"
                                 color: "#4CAF50"
+                                font.pixelSize: 18
                             }
 
                             Text {
                                 text: "Image: nginx:latest"
                                 color: "#AAAAAA"
+                                font.pixelSize: 18
                             }
 
                             Row {
-                                spacing: 10
+                                spacing: 12
 
                                 Button {
                                     text: "Start"
@@ -183,369 +176,172 @@ ApplicationWindow {
                         }
                     }
                 }
-
-            
-Rectangle {
-    color: "#121212"
-
-    Column {
-        anchors.centerIn: parent
-        spacing: 30
-
-        Text {
-            text: "System Monitor"
-            color: "white"
-            font.pixelSize: 36
-            font.bold: true
-        }
-
-        Rectangle {
-            width: 520
-            height: 170
-            radius: 18
-            color: "#1E1E1E"
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 20
-                spacing: 20
-
-                Text {
-                    text: "CPU Usage"
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-                }
-
-                ProgressBar {
-                    value: 0.34
-                    width: 470
-                    height: 22
-                }
-
-                Text {
-                    text: "34%"
-                    color: "#4CAF50"
-                    font.pixelSize: 22
-                }
             }
-        }
 
-        Rectangle {
-            width: 520
-            height: 170
-            radius: 18
-            color: "#1E1E1E"
-
-            Column {
-                anchors.fill: parent
-                anchors.margins: 20
-                spacing: 20
-
-                Text {
-                    text: "RAM Usage"
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-                }
-
-                ProgressBar {
-                    value: 0.61
-                    width: 470
-                    height: 22
-                }
-
-                Text {
-                    text: "61%"
-                    color: "#4CAF50"
-                    font.pixelSize: 22
-                }
-            }
-        }
-
-        Rectangle {
-            width: 520
-            height: 120
-            radius: 18
-            color: "#1E1E1E"
-
-            Row {
-                anchors.centerIn: parent
-                spacing: 60
+            // MONITOR PAGE
+            Rectangle {
+                color: "#121212"
 
                 Column {
-                    spacing: 10
+                    anchors.centerIn: parent
+                    spacing: 30
 
                     Text {
-                        text: "Containers"
+                        text: "System Monitor"
                         color: "white"
-                        font.pixelSize: 20
-                    }
-
-                    Text {
-                        text: "4"
-                        color: "#4CAF50"
-                        font.pixelSize: 30
+                        font.pixelSize: 36
                         font.bold: true
                     }
-                }
 
-                Column {
-                    spacing: 10
+                    Rectangle {
+                        width: 520
+                        height: 170
+                        radius: 18
+                        color: "#1E1E1E"
 
-                    Text {
-                        text: "Images"
-                        color: "white"
-                        font.pixelSize: 20
-                    }
+                        Column {
+                            anchors.fill: parent
+                            anchors.margins: 20
+                            spacing: 20
 
-                    Text {
-                        text: "12"
-                        color: "#4CAF50"
-                        font.pixelSize: 30
-                        font.bold: true
-                    }
-                }
+                            Text {
+                                text: "CPU Usage"
+                                color: "white"
+                                font.pixelSize: 24
+                                font.bold: true
+                            }
 
-                Column {
-                    spacing: 10
+                            ProgressBar {
+                                value: 0.34
+                                width: 470
+                                height: 22
+                            }
 
-                    Text {
-                        text: "Networks"
-                        color: "white"
-                        font.pixelSize: 20
-                    }
-
-                    Text {
-                        text: "3"
-                        color: "#4CAF50"
-                        font.pixelSize: 30
-                        font.bold: true
-                    }
-                }
-            }
-        }
-    }
-}
-              Rectangle {
-    color: "#121212"
-
-    Column {
-        anchors.fill: parent
-        anchors.margins: 20
-        spacing: 20
-
-        Text {
-            text: "Docker Logs Console"
-            color: "white"
-            font.pixelSize: 36
-            font.bold: true
-        }
-
-        Rectangle {
-            width: parent.width - 40
-            height: 560
-            radius: 18
-            color: "#0A0A0A"
-            border.color: "#2E7D32"
-            border.width: 2
-
-            Column {
-                anchors.fill: parent
-
-                Rectangle {
-                    width: parent.width
-                    height: 50
-                    color: "#1A1A1A"
-                    radius: 18
-
-                    Row {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
-                        spacing: 12
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#F44336"
-                        }
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#FFC107"
-                        }
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#4CAF50"
-                        }
-
-                        Text {
-                            text: "container_logs.sh"
-                            color: "#AAAAAA"
-                            font.pixelSize: 18
-                            anchors.verticalCenter: parent.verticalCenter
+                            Text {
+                                text: "34%"
+                                color: "#4CAF50"
+                                font.pixelSize: 22
+                            }
                         }
                     }
-                }
 
-                Flickable {
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.topMargin: 60
-                    anchors.bottom: parent.bottom
-                    clip: true
+                    Rectangle {
+                        width: 520
+                        height: 170
+                        radius: 18
+                        color: "#1E1E1E"
 
-                    contentWidth: parent.width
-                    contentHeight: logColumn.height + 40
+                        Column {
+                            anchors.fill: parent
+                            anchors.margins: 20
+                            spacing: 20
 
-                    Column {
-                        id: logColumn
-                        width: parent.width - 40
-                        spacing: 16
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
+                            Text {
+                                text: "RAM Usage"
+                                color: "white"
+                                font.pixelSize: 24
+                                font.bold: true
+                            }
 
-                        Text {
-                            text: "[07:45:10] [INFO] Docker daemon initialized"
-                            color: "#4CAF50"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
+                            ProgressBar {
+                                value: 0.61
+                                width: 470
+                                height: 22
+                            }
 
-                        Text {
-                            text: "[07:45:18] [INFO] nginx-container started"
-                            color: "white"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:45:32] [WARNING] CPU usage spike detected"
-                            color: "#FFC107"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:45:40] [INFO] Monitoring service active"
-                            color: "#4CAF50"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:45:55] [ERROR] Failed image pull request"
-                            color: "#F44336"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:46:02] [INFO] Docker network connected"
-                            color: "white"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:46:15] [INFO] Volume mounted successfully"
-                            color: "#4CAF50"
-                            font.family: "monospace"
-                            font.pixelSize: 18
-                        }
-
-                        Text {
-                            text: "[07:46:27] [WARNING] RAM usage increased"
-                            color: "#FFC107"
-                            font.family: "monospace"
-                            font.pixelSize: 18
+                            Text {
+                                text: "61%"
+                                color: "#4CAF50"
+                                font.pixelSize: 22
+                            }
                         }
                     }
                 }
             }
-        }
-    }
-}
-Rectangle {
-    color: "#121212"
 
-    Column {
-        anchors.fill: parent
-        anchors.margins: 20
-        spacing: 20
-
-        Text {
-            text: "Linux Command Console"
-            color: "white"
-            font.pixelSize: 36
-            font.bold: true
-        }
-
-        Rectangle {
-            width: parent.width - 40
-            height: 560
-            radius: 18
-            color: "#0A0A0A"
-            border.color: "#00FF99"
-            border.width: 2
-
-            Column {
-                anchors.fill: parent
-                spacing: 0
-
-                Rectangle {
-                    width: parent.width
-                    height: 50
-                    color: "#1A1A1A"
-                    radius: 18
-
-                    Row {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
-                        spacing: 12
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#F44336"
-                        }
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#FFC107"
-                        }
-
-                        Rectangle {
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: "#4CAF50"
-                        }
-
-                        Text {
-                            text: "devops_terminal.sh"
-                            color: "#AAAAAA"
-                            font.pixelSize: 18
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
-                }
+            // LOGS PAGE
+            Rectangle {
+                color: "#121212"
 
                 Column {
+                    anchors.fill: parent
                     anchors.margins: 20
                     spacing: 20
+
+                    Text {
+                        text: "Docker Logs Console"
+                        color: "white"
+                        font.pixelSize: 36
+                        font.bold: true
+                    }
+
+                    Rectangle {
+                        width: parent.width - 40
+                        height: 500
+                        radius: 18
+                        color: "#0A0A0A"
+                        border.color: "#2E7D32"
+                        border.width: 2
+
+                        Flickable {
+                            anchors.fill: parent
+                            contentWidth: parent.width
+                            contentHeight: logColumn.height + 40
+                            clip: true
+
+                            Column {
+                                id: logColumn
+                                spacing: 16
+                                anchors.margins: 20
+
+                                Text {
+                                    text: "[INFO] Docker daemon initialized"
+                                    color: "#4CAF50"
+                                    font.family: "monospace"
+                                    font.pixelSize: 18
+                                }
+
+                                Text {
+                                    text: "[INFO] nginx-container started"
+                                    color: "white"
+                                    font.family: "monospace"
+                                    font.pixelSize: 18
+                                }
+
+                                Text {
+                                    text: "[WARNING] CPU usage spike detected"
+                                    color: "#FFC107"
+                                    font.family: "monospace"
+                                    font.pixelSize: 18
+                                }
+
+                                Text {
+                                    text: "[ERROR] Failed image pull request"
+                                    color: "#F44336"
+                                    font.family: "monospace"
+                                    font.pixelSize: 18
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // COMMANDS PAGE
+            Rectangle {
+                color: "#121212"
+
+                Column {
+                    anchors.fill: parent
+                    anchors.margins: 20
+                    spacing: 20
+
+                    Text {
+                        text: "Linux Command Console"
+                        color: "white"
+                        font.pixelSize: 36
+                        font.bold: true
+                    }
 
                     Row {
                         spacing: 10
@@ -560,7 +356,6 @@ Rectangle {
                         TextField {
                             width: 500
                             placeholderText: "Enter Linux command..."
-                            font.pixelSize: 18
                         }
 
                         Button {
@@ -575,76 +370,29 @@ Rectangle {
                         color: "#111111"
                         border.color: "#333333"
 
-                        Flickable {
-                            anchors.fill: parent
-                            contentWidth: parent.width
-                            contentHeight: outputColumn.height + 40
-                            clip: true
+                        Column {
+                            anchors.margins: 20
+                            spacing: 14
 
-                            Column {
-                                id: outputColumn
-                                width: parent.width - 40
-                                spacing: 14
-                                anchors.left: parent.left
-                                anchors.leftMargin: 20
-                                anchors.top: parent.top
-                                anchors.topMargin: 20
+                            Text {
+                                text: "$ docker ps"
+                                color: "#00FF99"
+                                font.family: "monospace"
+                                font.pixelSize: 18
+                            }
 
-                                Text {
-                                    text: "$ docker ps"
-                                    color: "#00FF99"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
+                            Text {
+                                text: "CONTAINER ID   IMAGE   STATUS"
+                                color: "white"
+                                font.family: "monospace"
+                                font.pixelSize: 18
+                            }
 
-                                Text {
-                                    text: "CONTAINER ID   IMAGE   STATUS"
-                                    color: "white"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "7ad21f        nginx   Running"
-                                    color: "#4CAF50"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "$ docker images"
-                                    color: "#00FF99"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "REPOSITORY     TAG       SIZE"
-                                    color: "white"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "nginx          latest    187MB"
-                                    color: "#4CAF50"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "$ systemctl status docker"
-                                    color: "#00FF99"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
-
-                                Text {
-                                    text: "Docker service active (running)"
-                                    color: "#4CAF50"
-                                    font.family: "monospace"
-                                    font.pixelSize: 18
-                                }
+                            Text {
+                                text: "7ad21f        nginx   Running"
+                                color: "#4CAF50"
+                                font.family: "monospace"
+                                font.pixelSize: 18
                             }
                         }
                     }
@@ -653,6 +401,3 @@ Rectangle {
         }
     }
 }
-              
-        
-
