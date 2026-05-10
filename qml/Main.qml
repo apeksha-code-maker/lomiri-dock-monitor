@@ -327,16 +327,78 @@ Rectangle {
         }
     }
 }
-                Rectangle {
-                    color: "#121212"
+               Rectangle {
+    color: "#121212"
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 20
+        spacing: 20
+
+        Text {
+            text: "Docker Logs"
+            color: "white"
+            font.pixelSize: 34
+            font.bold: true
+        }
+
+        Rectangle {
+            width: parent.width - 40
+            height: 500
+            radius: 14
+            color: "#0D0D0D"
+
+            Flickable {
+                anchors.fill: parent
+                contentWidth: parent.width
+                contentHeight: logColumn.height + 20
+                clip: true
+
+                Column {
+                    id: logColumn
+                    width: parent.width
+                    spacing: 12
+                    anchors.margins: 20
 
                     Text {
-                        anchors.centerIn: parent
-                        text: "Logs Page"
+                        text: "[INFO] Docker daemon started..."
+                        color: "#4CAF50"
+                        font.family: "monospace"
+                        font.pixelSize: 18
+                    }
+
+                    Text {
+                        text: "[INFO] nginx-container running"
                         color: "white"
-                        font.pixelSize: 30
+                        font.family: "monospace"
+                        font.pixelSize: 18
+                    }
+
+                    Text {
+                        text: "[WARNING] CPU usage increased"
+                        color: "#FFC107"
+                        font.family: "monospace"
+                        font.pixelSize: 18
+                    }
+
+                    Text {
+                        text: "[ERROR] Failed to connect to image registry"
+                        color: "#F44336"
+                        font.family: "monospace"
+                        font.pixelSize: 18
+                    }
+
+                    Text {
+                        text: "[INFO] Monitoring services active"
+                        color: "#4CAF50"
+                        font.family: "monospace"
+                        font.pixelSize: 18
                     }
                 }
+            }
+        }
+    }
+}
 
                 Rectangle {
                     color: "#121212"
