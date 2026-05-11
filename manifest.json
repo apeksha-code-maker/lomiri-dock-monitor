@@ -1,13 +1,13 @@
 {
-    "name": "lomiri-dock-monitor.apek",
-    "description": "Docker Monitoring Dashboard",
-    "architecture": "all",
+    "name": "lomiridock.apek",
+    "description": "Docker Dashboard",
+    "architecture": "amd64",
     "title": "Lomiri Dock",
     "version": "1.0.0",
     "maintainer": "Apek",
     "framework": "ubuntu-sdk-20.04",
     "hooks": {
-        "lomiri-dock-monitor": {
+        "lomiridock": {
             "apparmor": "apparmor.json",
             "desktop": "lomiridock.desktop"
         }
