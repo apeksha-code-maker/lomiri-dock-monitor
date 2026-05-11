@@ -1,9 +1,7 @@
 clickable_minimum_required: 7.0.0
 
-builder: custom
+builder: pure
 
-skip_review: true
-
-build: echo "Skipping package build"
+kill: python3
 
 launch: ./venv/bin/python3 main.py
