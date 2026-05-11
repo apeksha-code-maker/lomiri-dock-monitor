@@ -1,7 +1,9 @@
-clickable_minimum_required: 8.0.0
+clickable_minimum_required: 7.0.0
 
-builder: pure
+builder: custom
+
+build: echo "Build complete"
+
+launch: ./venv/bin/python3 main.py
 
 kill: python3
-
-launch: python3 main.py
