@@ -1,7 +1,9 @@
 [Desktop Entry]
-Name=Lomiri Dock
-Exec=python3 main.py
-Icon=icon.png
-Terminal=false
+Version=1.0
 Type=Application
-X-Ubuntu-Touch=true
+Name=Lomiri Dock
+Comment=Docker Monitoring Dashboard
+Exec=/home/apek/Desktop/lomiri-dock-monitor/venv/bin/python /home/apek/Desktop/lomiri-dock-monitor/main.py
+Icon=utilities-terminal
+Terminal=false
+Categories=Development;
